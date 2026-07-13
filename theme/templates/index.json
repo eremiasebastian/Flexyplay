@@ -129,9 +129,12 @@
       "settings": {
         "brand_name": "FlexyPlay",
         "collection": "homepage",
-        "max_products": 6
+        "max_products": 6,
+        "logo_image": "shopify://shop_images/flexyplay-logo.png"
       }
     }
   },
-  "order": ["flexyplay_home"]
+  "order": [
+    "flexyplay_home"
+  ]
 }
