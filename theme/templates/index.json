@@ -1,0 +1,137 @@
+{
+  "sections": {
+    "flexyplay_home": {
+      "type": "flexyplay-homepage",
+      "blocks": {
+        "step_1": {
+          "type": "step",
+          "settings": {
+            "emoji": "✏️",
+            "color": "#2EC4B6",
+            "shadow_color": "#23988d",
+            "title": "Design 3DGOB",
+            "text": "Modelăm fiecare articulație cu grijă."
+          }
+        },
+        "step_2": {
+          "type": "step",
+          "settings": {
+            "emoji": "🖨️",
+            "color": "#FFD166",
+            "shadow_color": "#d9ac47",
+            "title": "Print Bambu Lab",
+            "text": "Printat multicolor, în România."
+          }
+        },
+        "step_3": {
+          "type": "step",
+          "settings": {
+            "emoji": "🔍",
+            "color": "#FF6B5E",
+            "shadow_color": "#d94a3d",
+            "title": "Verificare",
+            "text": "Testăm fiecare articulație manual."
+          }
+        },
+        "step_4": {
+          "type": "step",
+          "settings": {
+            "emoji": "🎀",
+            "color": "#432B21",
+            "shadow_color": "#2a1a13",
+            "title": "Ambalare cadou",
+            "text": "Împachetat frumos și trimis."
+          }
+        },
+        "trust_1": {
+          "type": "trust_item",
+          "settings": {
+            "emoji": "🧸",
+            "title": "Sigur 3+",
+            "subtitle": "Materiale testate"
+          }
+        },
+        "trust_2": {
+          "type": "trust_item",
+          "settings": {
+            "emoji": "🇷🇴",
+            "title": "Printat în România",
+            "subtitle": "Producție locală"
+          }
+        },
+        "trust_3": {
+          "type": "trust_item",
+          "settings": {
+            "emoji": "↩️",
+            "title": "Retur 14 zile",
+            "subtitle": "Fără bătăi de cap"
+          }
+        },
+        "trust_4": {
+          "type": "trust_item",
+          "settings": {
+            "emoji": "🚚",
+            "title": "Livrare 2–4 zile",
+            "subtitle": "În toată țara"
+          }
+        },
+        "faq_1": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Din ce material sunt făcute jucăriile?",
+            "answer": "Din filament PLA de calitate, un plastic pe bază de plante, netoxic și sigur pentru copii peste 3 ani."
+          }
+        },
+        "faq_2": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Chiar se îndoaie fiecare parte?",
+            "answer": "Da! Fiecare animăluț e printat dintr-o singură bucată, cu zeci de articulații care se mișcă fără să se rupă."
+          }
+        },
+        "faq_3": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Pot alege culoarea?",
+            "answer": "Sigur. După comandă îți scriem ca să confirmăm culorile preferate pentru fiecare produs."
+          }
+        },
+        "faq_4": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Cât durează livrarea?",
+            "answer": "Totul e printat la comandă: producția durează 1–2 zile, apoi livrarea 2–4 zile lucrătoare în toată țara."
+          }
+        },
+        "faq_5": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Pot returna produsul?",
+            "answer": "Da, ai 14 zile pentru retur dacă produsul e nefolosit și în ambalajul original."
+          }
+        }
+      },
+      "block_order": [
+        "step_1",
+        "step_2",
+        "step_3",
+        "step_4",
+        "trust_1",
+        "trust_2",
+        "trust_3",
+        "trust_4",
+        "faq_1",
+        "faq_2",
+        "faq_3",
+        "faq_4",
+        "faq_5"
+      ],
+      "settings": {
+        "brand_name": "FlexyPlay",
+        "collection": "homepage",
+        "max_products": 6
+      }
+    }
+  },
+  "order": ["flexyplay_home"]
+}
