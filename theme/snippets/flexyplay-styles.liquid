@@ -219,8 +219,8 @@
       root.querySelectorAll('form[data-fp-add]').forEach(function (form) {
         if (form.dataset.fpBound) return;
         form.dataset.fpBound = '1';
-        // "Cumpără acum" submits natively with return_to=<cart>, so it adds the
-        // product and opens the cart page; only "Adaugă în coș" stays on the page.
+        // "Cumpără acum" submits natively with return_to=/checkout; only the
+        // add-to-cart button stays on the page.
         form.querySelectorAll('[data-fp-buy]').forEach(function (b) {
           b.addEventListener('click', function () { form.dataset.fpBuy = '1'; });
         });
