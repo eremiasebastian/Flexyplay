@@ -167,7 +167,7 @@
           {%- when 3 -%}{%- assign bullets = v3_bullets -%}{%- assign v_subtitle = section.settings.variant_3_subtitle -%}
           {%- else -%}{%- assign bullets = blank -%}{%- assign v_subtitle = blank -%}
         {%- endcase -%}
-        <form method="post" action="{{ routes.cart_add_url }}" class="fp-reveal fp-card" style="{% if is_featured %}background:linear-gradient(165deg,#FF6B5E,#ff8566);border-radius:32px;padding:34px 30px;box-shadow:0 24px 46px rgba(255,107,94,.4);color:#fff;{% else %}background:#fff;border:2px solid #f0e2d2;border-radius:28px;padding:30px;box-shadow:0 14px 30px rgba(67,43,33,.07);{% endif %}position:relative;">
+        <form method="post" action="{{ routes.cart_add_url }}" data-fp-add data-fp-title="{{ product.title | escape }} – {{ variant.title | escape }}" class="fp-reveal fp-card" style="{% if is_featured %}background:linear-gradient(165deg,#FF6B5E,#ff8566);border-radius:32px;padding:34px 30px;box-shadow:0 24px 46px rgba(255,107,94,.4);color:#fff;{% else %}background:#fff;border:2px solid #f0e2d2;border-radius:28px;padding:30px;box-shadow:0 14px 30px rgba(67,43,33,.07);{% endif %}position:relative;">
           <input type="hidden" name="id" value="{{ variant.id }}">
           {%- if is_featured -%}
             <span style="position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:#FFD166;color:#432B21;font-family:'Baloo 2',cursive;font-weight:800;font-size:13px;padding:6px 16px;border-radius:999px;white-space:nowrap;">{{ section.settings.featured_label }}</span>

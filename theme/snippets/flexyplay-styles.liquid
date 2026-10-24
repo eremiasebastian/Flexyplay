@@ -68,6 +68,12 @@
   .fp-footer a { color: #e9d9cf; }
   .fp-footer a:hover { color: #fff; }
 
+  .fp-btn3d.fp-btn-added, .fp-btn3d.fp-btn-added:disabled { background: #2EC4B6 !important; color: #fff !important; border-color: #2EC4B6 !important; box-shadow: 0 5px 0 #23988d !important; opacity: 1 !important; }
+  .fp-toast { position: fixed; left: 50%; bottom: 24px; z-index: 60; transform: translate(-50%, 20px); opacity: 0; pointer-events: none; display: flex; align-items: center; gap: 14px; max-width: calc(100% - 32px); background: #432B21; color: #FFF6EC; font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 15px; padding: 14px 18px; border-radius: 18px; box-shadow: 0 16px 36px rgba(67,43,33,.3); transition: opacity .25s ease, transform .25s ease; }
+  .fp-toast.fp-toast-show { opacity: 1; transform: translate(-50%, 0); pointer-events: auto; }
+  .fp-toast.fp-toast-error { background: #d94a3d; color: #fff; }
+  .fp-toast a { color: #FFD166; font-family: 'Baloo 2', cursive; font-weight: 800; white-space: nowrap; text-decoration: none; }
+
   .fp-demo-video { width: 100%; height: 100%; object-fit: cover; display: block; }
 
   /* Responsive */
@@ -161,15 +167,97 @@
       });
     }
 
+    // Add to cart without leaving the page: POST to /cart/add.js, refresh the
+    // cart count in the nav and show a toast. Without JS the form still posts
+    // normally and lands on the cart page.
+    var toastTimer;
+    function showToast(message, cartUrl, isError) {
+      var toast = document.querySelector('.fp-toast');
+      if (!toast) {
+        toast = document.createElement('div');
+        toast.className = 'fp-toast';
+        toast.setAttribute('role', 'status');
+        toast.setAttribute('aria-live', 'polite');
+        document.body.appendChild(toast);
+      }
+      toast.textContent = message;
+      if (cartUrl) {
+        var link = document.createElement('a');
+        link.href = cartUrl;
+        link.textContent = 'Vezi coșul →';
+        toast.appendChild(link);
+      }
+      toast.classList.toggle('fp-toast-error', !!isError);
+      toast.classList.add('fp-toast-show');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(function () { toast.classList.remove('fp-toast-show'); }, 4000);
+    }
+
+    function updateCartCount(count) {
+      document.querySelectorAll('.fp-cart').forEach(function (cart) {
+        var badge = cart.querySelector('.fp-cart-count');
+        if (count > 0) {
+          if (!badge) {
+            badge = document.createElement('span');
+            badge.className = 'fp-cart-count';
+            cart.appendChild(badge);
+          }
+          badge.textContent = count;
+        } else if (badge) {
+          badge.remove();
+        }
+      });
+    }
+
+    function initAddToCart(root) {
+      if (!window.fetch || !window.FormData) return;
+      root.querySelectorAll('form[data-fp-add]').forEach(function (form) {
+        if (form.dataset.fpBound) return;
+        form.dataset.fpBound = '1';
+        form.addEventListener('submit', function (e) {
+          e.preventDefault();
+          var btn = form.querySelector('[type="submit"]');
+          var label = btn.innerHTML;
+          var cartLink = document.querySelector('.fp-cart');
+          var cartUrl = cartLink ? cartLink.getAttribute('href') : form.getAttribute('action').replace(/\/add$/, '');
+          btn.disabled = true;
+          fetch(form.getAttribute('action') + '.js', {
+            method: 'POST',
+            headers: { 'Accept': 'application/json' },
+            body: new FormData(form)
+          })
+            .then(function (res) {
+              return res.json().then(function (data) { if (!res.ok) throw data; return data; });
+            })
+            .then(function () { return fetch(cartUrl + '.js', { headers: { 'Accept': 'application/json' } }); })
+            .then(function (res) { return res.json(); })
+            .then(function (cart) {
+              updateCartCount(cart.item_count);
+              btn.innerHTML = 'Adăugat ✓';
+              btn.classList.add('fp-btn-added');
+              showToast((form.dataset.fpTitle || 'Produsul') + ' a fost adăugat în coș.', cartUrl, false);
+              setTimeout(function () { btn.innerHTML = label; btn.disabled = false; btn.classList.remove('fp-btn-added'); }, 1800);
+            })
+            .catch(function (err) {
+              btn.innerHTML = label;
+              btn.disabled = false;
+              showToast((err && err.description) || 'Nu am putut adăuga produsul. Încearcă din nou.', null, true);
+            });
+        });
+      });
+    }
+
     document.addEventListener('DOMContentLoaded', function () {
       initReveal(document);
       initFaq(document);
       initFilters(document);
+      initAddToCart(document);
     });
     if (document.readyState !== 'loading') {
       initReveal(document);
       initFaq(document);
       initFilters(document);
+      initAddToCart(document);
     }
   })();
 </script>

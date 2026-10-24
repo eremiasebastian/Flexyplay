@@ -124,7 +124,7 @@
             <div class="fp-card-actions">
               {%- if product.has_only_default_variant -%}
                 {%- if product.available -%}
-                  <form method="post" action="{{ routes.cart_add_url }}">
+                  <form method="post" action="{{ routes.cart_add_url }}" data-fp-add data-fp-title="{{ product.title | escape }}">
                     <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
                     <input type="hidden" name="quantity" value="1">
                     <button type="submit" class="fp-btn3d fp-card-btn fp-card-btn-primary">Adaugă în coș</button>
