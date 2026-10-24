@@ -67,7 +67,7 @@
         </div>
         <div style="display:flex;gap:14px;flex-wrap:wrap;">
           <a href="#variante" class="fp-btn3d" style="background:#FF6B5E;color:#fff;font-family:'Baloo 2',cursive;font-weight:700;font-size:18px;padding:16px 30px;border-radius:18px;box-shadow:0 8px 0 #d94a3d;">{{ section.settings.cta_primary_label }}</a>
-          <a href="#demo" class="fp-btn3d" style="background:#fff;color:#432B21;font-family:'Baloo 2',cursive;font-weight:700;font-size:18px;padding:16px 30px;border-radius:18px;border:2px solid #efdcc7;box-shadow:0 8px 0 #efdcc7;">{{ section.settings.cta_secondary_label }}</a>
+          <a href="#detalii" class="fp-btn3d" style="background:#fff;color:#432B21;font-family:'Baloo 2',cursive;font-weight:700;font-size:18px;padding:16px 30px;border-radius:18px;border:2px solid #efdcc7;box-shadow:0 8px 0 #efdcc7;">{{ section.settings.cta_secondary_label }}</a>
         </div>
       </div>
 
@@ -118,35 +118,22 @@
   </div>
   {%- endif -%}
 
-  <!-- DEMO -->
-  <section id="demo" style="padding:90px 24px;max-width:1160px;margin:0 auto;">
-    <div class="fp-demo-grid" style="display:grid;grid-template-columns:.85fr 1.15fr;gap:56px;align-items:center;">
-      <div class="fp-reveal" style="position:relative;">
-        <div style="aspect-ratio:9/16;max-width:320px;margin:0 auto;border-radius:32px;background:linear-gradient(160deg,#FFD166,#FF9E4F);padding:14px;box-shadow:0 26px 50px rgba(255,158,79,.35);">
-          <div style="width:100%;height:100%;border-radius:22px;overflow:hidden;background:repeating-linear-gradient(45deg,#fff,#fff 12px,#fff5e6 12px,#fff5e6 24px);display:flex;align-items:center;justify-content:center;">
-            {%- if section.settings.demo_video != blank -%}
-              {{ section.settings.demo_video | video_tag: autoplay: true, loop: true, muted: true, controls: false, class: 'fp-demo-video' }}
-            {%- else -%}
-              <span style="font-family:monospace;font-size:12px;color:#b58a4a;text-align:center;padding:0 16px;">[ video vertical ]<br>demo articulație<br>9:16 · loop</span>
-            {%- endif -%}
+  <!-- DETALII -->
+  <section id="detalii" style="padding:90px 24px;max-width:1160px;margin:0 auto;">
+    <div class="fp-reveal" style="text-align:center;margin-bottom:40px;">
+      <h2 class="fp-section-h2" style="font-family:'Baloo 2',cursive;font-weight:800;font-size:40px;line-height:1.08;margin:0 0 14px;">{{ section.settings.demo_heading }}</h2>
+      <p style="font-size:18px;color:#6b5348;line-height:1.6;margin:0 auto;max-width:560px;">{{ section.settings.demo_subheading }}</p>
+    </div>
+    <div class="fp-grid-4" style="display:grid;grid-template-columns:repeat(4,1fr);gap:18px;">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'feature' -%}
+          <div class="fp-reveal fp-card" style="background:#fff;border:2px solid #f0e2d2;border-radius:22px;padding:22px;" {{ block.shopify_attributes }}>
+            <div style="width:46px;height:46px;border-radius:14px;background:{{ block.settings.color }};display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:14px;">{{ block.settings.emoji }}</div>
+            <h3 style="font-family:'Baloo 2',cursive;font-weight:700;font-size:19px;margin:0 0 6px;">{{ block.settings.title }}</h3>
+            <p style="font-size:15px;color:#6b5348;margin:0;line-height:1.5;">{{ block.settings.text }}</p>
           </div>
-        </div>
-      </div>
-      <div>
-        <h2 class="fp-reveal fp-section-h2" style="font-family:'Baloo 2',cursive;font-weight:800;font-size:40px;line-height:1.08;margin:0 0 14px;">{{ section.settings.demo_heading }}</h2>
-        <p class="fp-reveal" style="font-size:18px;color:#6b5348;line-height:1.6;margin:0 0 32px;max-width:440px;">{{ section.settings.demo_subheading }}</p>
-        <div class="fp-grid-4" style="display:grid;grid-template-columns:1fr 1fr;gap:18px;">
-          {%- for block in section.blocks -%}
-            {%- if block.type == 'feature' -%}
-              <div class="fp-reveal fp-card" style="background:#fff;border:2px solid #f0e2d2;border-radius:22px;padding:22px;" {{ block.shopify_attributes }}>
-                <div style="width:46px;height:46px;border-radius:14px;background:{{ block.settings.color }};display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:14px;">{{ block.settings.emoji }}</div>
-                <h3 style="font-family:'Baloo 2',cursive;font-weight:700;font-size:19px;margin:0 0 6px;">{{ block.settings.title }}</h3>
-                <p style="font-size:15px;color:#6b5348;margin:0;line-height:1.5;">{{ block.settings.text }}</p>
-              </div>
-            {%- endif -%}
-          {%- endfor -%}
-        </div>
-      </div>
+        {%- endif -%}
+      {%- endfor -%}
     </div>
   </section>
 
@@ -328,15 +315,14 @@
     { "type": "text", "id": "headline_suffix", "label": "Titlu — partea 2", "default": "care se deschide" },
     { "type": "textarea", "id": "subtitle", "label": "Subtitlu (gol = descrierea produsului)", "default": "Un mops flexi complet articulat plus brutăria lui în miniatură — croissante, cupcakes și tejghea. Vine în cutie cadou, gata de dăruit." },
     { "type": "text", "id": "cta_primary_label", "label": "Buton principal — text", "default": "Comandă setul complet" },
-    { "type": "text", "id": "cta_secondary_label", "label": "Buton secundar — text", "default": "Vezi cum se mișcă" },
+    { "type": "text", "id": "cta_secondary_label", "label": "Buton secundar — text", "default": "Vezi detalii" },
     { "type": "color", "id": "frame_color_1", "label": "Cadru poză — culoare 1", "default": "#2EC4B6" },
     { "type": "color", "id": "frame_color_2", "label": "Cadru poză — culoare 2", "default": "#33b98f" },
     { "type": "header", "content": "Bandă marquee" },
     { "type": "textarea", "id": "marquee_items", "label": "Beneficii (unul pe linie)", "default": "🐾 Complet articulat\n🎁 Vine în cutie cadou\n♻️ Materiale sigure 3+\n🇷🇴 Printat în România\n🚚 Livrare rapidă" },
-    { "type": "header", "content": "Demo" },
+    { "type": "header", "content": "Detalii" },
     { "type": "text", "id": "demo_heading", "label": "Titlu", "default": "Se îndoaie exact ca-n filmulețe" },
     { "type": "textarea", "id": "demo_subheading", "label": "Subtitlu", "default": "Fiecare segment se mișcă independent. Îl pui în orice poziție și rămâne acolo — perfect pentru joacă și pentru poze." },
-    { "type": "video", "id": "demo_video", "label": "Video demo (opțional, gol = placeholder)" },
     { "type": "header", "content": "Variante" },
     { "type": "text", "id": "variants_heading", "label": "Titlu secțiune", "default": "Alege varianta ta" },
     { "type": "text", "id": "variants_subheading", "label": "Subtitlu secțiune", "default": "Toate sunt printate la comandă, în România." },
