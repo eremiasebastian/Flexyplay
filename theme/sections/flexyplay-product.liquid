@@ -190,7 +190,7 @@
           {%- if variant.available -%}
             <div class="fp-card-actions">
               <button type="submit" class="fp-btn3d fp-card-btn {% if is_featured %}fp-card-btn-light{% else %}fp-card-btn-primary{% endif %}">{{ section.settings.default_cta_label }}</button>
-              <button type="submit" name="return_to" value="/checkout" data-fp-buy class="fp-btn3d fp-card-btn fp-card-btn-buy">{{ section.settings.buy_now_label }}</button>
+              <button type="submit" name="return_to" value="{{ routes.cart_url }}" data-fp-buy class="fp-btn3d fp-card-btn fp-card-btn-buy">{{ section.settings.buy_now_label }}</button>
             </div>
           {%- else -%}
             <button type="button" class="fp-btn3d" disabled style="width:100%;display:block;text-align:center;background:#efdcc7;color:#8a7362;font-family:'Baloo 2',cursive;font-weight:700;font-size:16px;padding:14px;border:none;border-radius:16px;">Stoc epuizat</button>
@@ -343,7 +343,7 @@
     { "type": "text", "id": "featured_variant_title", "label": "Numele variantei evidențiate", "info": "Trebuie să fie identic cu titlul unei variante reale a produsului (ex. \"Setul Complet\").", "default": "Setul Complet" },
     { "type": "text", "id": "featured_label", "label": "Etichetă variantă evidențiată", "default": "CEL MAI POPULAR" },
     { "type": "text", "id": "default_cta_label", "label": "Text buton — adaugă în coș", "default": "Adaugă în coș" },
-    { "type": "text", "id": "buy_now_label", "label": "Text buton — cumpără acum (merge direct la finalizarea comenzii)", "default": "Cumpără acum" },
+    { "type": "text", "id": "buy_now_label", "label": "Text buton — cumpără acum (adaugă produsul și deschide coșul)", "default": "Cumpără acum" },
     { "type": "paragraph", "content": "Subtitlurile și bulinele de sub fiecare variantă sunt opționale și se aplică pe poziție (1ª, 2ª, 3ª variantă a produsului), nu pe nume — dacă schimbi ordinea variantelor din Admin, verifică și aici." },
     { "type": "text", "id": "variant_1_subtitle", "label": "Subtitlu variantă 1", "default": "Animăluțul flexi, singur." },
     { "type": "textarea", "id": "variant_1_bullets", "label": "Beneficii variantă 1 (una pe linie)", "default": "🐾 Mops complet articulat\n📦 Ambalaj standard" },
