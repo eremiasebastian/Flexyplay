@@ -120,23 +120,30 @@
           <div style="padding:22px 22px 24px;display:flex;flex-direction:column;flex:1;">
             <h3 style="font-family:'Baloo 2',cursive;font-weight:700;font-size:21px;margin:0 0 6px;"><a href="{{ product.url }}" style="color:#432B21;">{{ product.title }}</a></h3>
             <p style="font-size:15px;color:#6b5348;line-height:1.5;margin:0 0 18px;flex:1;">{{ product.description | strip_html | truncate: 100 }}</p>
-            <span style="font-family:'Baloo 2',cursive;font-weight:800;font-size:26px;margin-bottom:14px;">{% unless product.has_only_default_variant %}de la {% endunless %}{{ product.price_min | money }}</span>
-            <div class="fp-card-actions">
-              {%- if product.has_only_default_variant -%}
-                {%- if product.available -%}
-                  <form method="post" action="{{ routes.cart_add_url }}" data-fp-add data-fp-title="{{ product.title | escape }}">
-                    <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
-                    <input type="hidden" name="quantity" value="1">
-                    <button type="submit" class="fp-btn3d fp-card-btn fp-card-btn-primary">Adaugă în coș</button>
-                  </form>
-                {%- else -%}
-                  <button type="button" class="fp-btn3d fp-card-btn" disabled>Stoc epuizat</button>
-                {%- endif -%}
-              {%- else -%}
-                <a href="{{ product.url }}#variante" class="fp-btn3d fp-card-btn fp-card-btn-primary">Alege varianta</a>
-              {%- endif -%}
-              <a href="{{ product.url }}" class="fp-btn3d fp-card-btn fp-card-btn-secondary">Vezi produsul</a>
+            <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:14px;">
+              <span style="font-family:'Baloo 2',cursive;font-weight:800;font-size:26px;">{% unless product.has_only_default_variant %}de la {% endunless %}{{ product.price_min | money }}</span>
+              <a href="{{ product.url }}" class="fp-card-link">Vezi produsul →</a>
             </div>
+            {%- if product.available -%}
+              <form method="post" action="{{ routes.cart_add_url }}" data-fp-add data-fp-title="{{ product.title | escape }}">
+                {%- if product.has_only_default_variant -%}
+                  <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+                {%- else -%}
+                  <select name="id" class="fp-variant-select" aria-label="Alege varianta">
+                    {%- for variant in product.variants -%}
+                      <option value="{{ variant.id }}" data-title="{{ variant.title | escape }}"{% if variant.id == product.selected_or_first_available_variant.id %} selected{% endif %}{% unless variant.available %} disabled{% endunless %}>{{ variant.title }} — {{ variant.price | money }}</option>
+                    {%- endfor -%}
+                  </select>
+                {%- endif -%}
+                <input type="hidden" name="quantity" value="1">
+                <div class="fp-card-actions">
+                  <button type="submit" class="fp-btn3d fp-card-btn fp-card-btn-primary">Adaugă în coș</button>
+                  <button type="submit" name="return_to" value="/checkout" data-fp-buy class="fp-btn3d fp-card-btn fp-card-btn-buy">Cumpără acum</button>
+                </div>
+              </form>
+            {%- else -%}
+              <button type="button" class="fp-btn3d fp-card-btn" disabled>Stoc epuizat</button>
+            {%- endif -%}
           </div>
         </div>
       {%- else -%}

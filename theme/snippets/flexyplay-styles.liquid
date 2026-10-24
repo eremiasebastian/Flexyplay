@@ -47,10 +47,13 @@
   .fp-cart-count { position: absolute; top: -7px; right: -7px; min-width: 20px; height: 20px; padding: 0 5px; border-radius: 999px; background: #FF6B5E; color: #fff; font-family: 'Baloo 2', cursive; font-weight: 800; font-size: 12px; line-height: 20px; text-align: center; }
 
   .fp-card-actions { display: flex; gap: 10px; }
-  .fp-card-actions form { flex: 1; display: flex; }
   .fp-card-btn { flex: 1; width: 100%; display: block; text-align: center; font-family: 'Baloo 2', cursive; font-weight: 700; font-size: 15px; padding: 11px 10px; border-radius: 14px; white-space: nowrap; }
   .fp-root a.fp-card-btn-primary, .fp-card-btn-primary { background: #FF6B5E; color: #fff; box-shadow: 0 5px 0 #d94a3d; }
-  .fp-root a.fp-card-btn-secondary { background: #fff; color: #432B21; border: 2px solid #efdcc7; box-shadow: 0 5px 0 #efdcc7; }
+  .fp-card-btn-buy { background: #432B21; color: #fff; box-shadow: 0 5px 0 #2a1a13; }
+  .fp-card-btn-light { background: #fff; color: #FF6B5E; box-shadow: 0 5px 0 #d94a3d; }
+  .fp-root a.fp-card-link { font-weight: 800; font-size: 14px; color: #6b5348; white-space: nowrap; }
+  .fp-root a.fp-card-link:hover { color: #FF6B5E; }
+  .fp-variant-select { width: 100%; margin-bottom: 12px; font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 14px; color: #432B21; background: #fff; border: 2px solid #efdcc7; border-radius: 12px; padding: 10px 12px; cursor: pointer; }
   .fp-card-btn:disabled { background: #efdcc7; color: #8a7362; }
 
   .fp-badge-pill { display: inline-flex; align-items: center; gap: 8px; background: #fff; border: 2px solid #ffe0aa; color: #432B21; font-weight: 800; font-size: 13px; padding: 7px 14px; border-radius: 999px; }
@@ -214,9 +217,21 @@
       root.querySelectorAll('form[data-fp-add]').forEach(function (form) {
         if (form.dataset.fpBound) return;
         form.dataset.fpBound = '1';
+        // "Cumpără acum" submits natively with return_to=/checkout; only the
+        // add-to-cart button stays on the page.
+        form.querySelectorAll('[data-fp-buy]').forEach(function (b) {
+          b.addEventListener('click', function () { form.dataset.fpBuy = '1'; });
+        });
         form.addEventListener('submit', function (e) {
+          if (form.dataset.fpBuy || (e.submitter && e.submitter.hasAttribute('data-fp-buy'))) {
+            delete form.dataset.fpBuy;
+            return;
+          }
           e.preventDefault();
-          var btn = form.querySelector('[type="submit"]');
+          var btn = form.querySelector('[type="submit"]:not([data-fp-buy])');
+          var title = form.dataset.fpTitle || 'Produsul';
+          var picked = form.querySelector('select[name="id"]');
+          if (picked && picked.selectedOptions[0]) title += ' – ' + picked.selectedOptions[0].dataset.title;
           var label = btn.innerHTML;
           var cartLink = document.querySelector('.fp-cart');
           var cartUrl = cartLink ? cartLink.getAttribute('href') : form.getAttribute('action').replace(/\/add$/, '');
@@ -235,7 +250,7 @@
               updateCartCount(cart.item_count);
               btn.innerHTML = 'Adăugat ✓';
               btn.classList.add('fp-btn-added');
-              showToast((form.dataset.fpTitle || 'Produsul') + ' a fost adăugat în coș.', cartUrl, false);
+              showToast(title + ' a fost adăugat în coș.', cartUrl, false);
               setTimeout(function () { btn.innerHTML = label; btn.disabled = false; btn.classList.remove('fp-btn-added'); }, 1800);
             })
             .catch(function (err) {
