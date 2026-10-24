@@ -84,7 +84,7 @@
       {%- for product in products limit: section.settings.max_products -%}
         {%- assign gi = forloop.index0 | modulo: 6 -%}
         {%- assign gradient = gradients[gi] -%}
-        {%- assign emoji = emojis[gi] -%}
+        {%- assign emoji = product.metafields.custom.emoji.value | default: emojis[gi] -%}
         {%- assign cat = '' -%}
         {%- if product.tags contains 'playseturi' -%}{%- assign cat = 'playseturi' -%}
         {%- elsif product.tags contains 'figurine' -%}{%- assign cat = 'figurine' -%}
