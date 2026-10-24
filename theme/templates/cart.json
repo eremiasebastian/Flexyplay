@@ -1,0 +1,12 @@
+{
+  "sections": {
+    "flexyplay_cart": {
+      "type": "flexyplay-cart",
+      "settings": {
+        "brand_name": "FlexyPlay",
+        "logo_image": "shopify://shop_images/flexyplay-logo-trim.png"
+      }
+    }
+  },
+  "order": ["flexyplay_cart"]
+}

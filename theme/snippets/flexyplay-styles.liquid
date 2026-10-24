@@ -212,6 +212,8 @@
       });
     }
 
+    window.fpUpdateCartCount = updateCartCount;
+
     function initAddToCart(root) {
       if (!window.fetch || !window.FormData) return;
       root.querySelectorAll('form[data-fp-add]').forEach(function (form) {
