@@ -38,7 +38,20 @@
   .fp-logo { display: inline-flex; align-items: center; font-family: 'Baloo 2', cursive; font-weight: 800; font-size: 26px; letter-spacing: -.5px; background: linear-gradient(90deg,#2EC4B6,#4bb96a,#FFD166,#FF9E4F,#FF6B5E); -webkit-background-clip: text; background-clip: text; color: transparent; }
   .fp-logo img { display: block; height: 46px; width: auto; }
   .fp-nav-links { display: flex; align-items: center; gap: 22px; }
-  .fp-nav-links a:not(.fp-btn3d) { color: #432B21; font-weight: 700; font-size: 15px; }
+  .fp-nav-links a:not(.fp-btn3d):not(.fp-cart) { color: #432B21; font-weight: 700; font-size: 15px; }
+
+  .fp-cart { position: relative; display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 14px; background: #fff; border: 2px solid #efdcc7; }
+  .fp-nav-links a.fp-cart { color: #432B21; }
+  .fp-nav-links a.fp-cart:hover { color: #FF6B5E; }
+  .fp-cart svg { width: 22px; height: 22px; }
+  .fp-cart-count { position: absolute; top: -7px; right: -7px; min-width: 20px; height: 20px; padding: 0 5px; border-radius: 999px; background: #FF6B5E; color: #fff; font-family: 'Baloo 2', cursive; font-weight: 800; font-size: 12px; line-height: 20px; text-align: center; }
+
+  .fp-card-actions { display: flex; gap: 10px; }
+  .fp-card-actions form { flex: 1; display: flex; }
+  .fp-card-btn { flex: 1; width: 100%; display: block; text-align: center; font-family: 'Baloo 2', cursive; font-weight: 700; font-size: 15px; padding: 11px 10px; border-radius: 14px; white-space: nowrap; }
+  .fp-root a.fp-card-btn-primary, .fp-card-btn-primary { background: #FF6B5E; color: #fff; box-shadow: 0 5px 0 #d94a3d; }
+  .fp-root a.fp-card-btn-secondary { background: #fff; color: #432B21; border: 2px solid #efdcc7; box-shadow: 0 5px 0 #efdcc7; }
+  .fp-card-btn:disabled { background: #efdcc7; color: #8a7362; }
 
   .fp-badge-pill { display: inline-flex; align-items: center; gap: 8px; background: #fff; border: 2px solid #ffe0aa; color: #432B21; font-weight: 800; font-size: 13px; padding: 7px 14px; border-radius: 999px; }
   .fp-dot { width: 9px; height: 9px; border-radius: 50%; background: #2EC4B6; display: inline-block; }
@@ -62,11 +75,16 @@
     .fp-hero-grid, .fp-demo-grid { grid-template-columns: 1fr !important; }
     .fp-grid-3 { grid-template-columns: repeat(2,1fr) !important; }
     .fp-grid-4 { grid-template-columns: repeat(2,1fr) !important; }
-    .fp-nav-links a:not(.fp-btn3d) { display: none; }
+    .fp-nav-links a:not(.fp-btn3d):not(.fp-cart) { display: none; }
     .fp-hero-h1 { font-size: 42px !important; }
     .fp-section-h2 { font-size: 32px !important; }
   }
   @media (max-width: 600px) {
+    .fp-nav { padding: 10px 12px 10px 14px; }
+    .fp-logo img { height: 32px; }
+    .fp-nav-links { gap: 10px; }
+    .fp-nav-links a.fp-btn3d { font-size: 13px !important; padding: 9px 12px !important; white-space: nowrap; }
+    .fp-cart { width: 40px; height: 40px; }
     .fp-grid-3 { grid-template-columns: 1fr !important; }
     .fp-grid-4 { grid-template-columns: 1fr !important; }
     .fp-variants-grid { grid-template-columns: 1fr !important; }

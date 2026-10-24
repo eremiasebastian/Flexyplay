@@ -27,6 +27,10 @@
       <a href="#proces">{{ section.settings.nav_link_2 }}</a>
       <a href="#faq">{{ section.settings.nav_link_3 }}</a>
       <a href="#produse" class="fp-btn3d" style="background:#FF6B5E;color:#fff;font-family:'Baloo 2',cursive;font-weight:700;font-size:15px;padding:11px 20px;border-radius:16px;box-shadow:0 6px 0 #d94a3d;">{{ section.settings.nav_cta_label }}</a>
+      <a href="{{ routes.cart_url }}" class="fp-cart" aria-label="Coș de cumpărături">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 7h12l-1 13H7L6 7z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg>
+        {%- if cart.item_count > 0 -%}<span class="fp-cart-count">{{ cart.item_count }}</span>{%- endif -%}
+      </a>
     </div>
   </nav>
 
@@ -102,8 +106,8 @@
         {%- elsif product.compare_at_price_min > product.price_min -%}
           {%- assign badge_label = 'Reducere' -%} {%- assign badge_bg = '#FF6B5E' -%} {%- assign badge_color = '#fff' -%}
         {%- endif -%}
-        <a href="{{ product.url }}" class="fp-card fp-reveal" data-fp-card data-fp-cat="{{ cat }}" style="display:flex;flex-direction:column;background:#fff;border:2px solid #f0e2d2;border-radius:28px;overflow:hidden;box-shadow:0 12px 26px rgba(67,43,33,.07);color:#432B21;">
-          <div style="position:relative;aspect-ratio:4/3;background:{{ gradient }};display:flex;align-items:center;justify-content:center;">
+        <div class="fp-card fp-reveal" data-fp-card data-fp-cat="{{ cat }}" style="display:flex;flex-direction:column;background:#fff;border:2px solid #f0e2d2;border-radius:28px;overflow:hidden;box-shadow:0 12px 26px rgba(67,43,33,.07);color:#432B21;">
+          <a href="{{ product.url }}" style="position:relative;display:flex;aspect-ratio:4/3;background:{{ gradient }};align-items:center;justify-content:center;">
             {%- if product.featured_image -%}
               <img src="{{ product.featured_image | image_url: width: 700 }}" alt="{{ product.featured_image.alt | escape }}" loading="lazy" width="700" height="525" style="width:100%;height:100%;object-fit:cover;">
             {%- else -%}
@@ -112,16 +116,29 @@
             {%- if badge_label != '' -%}
               <span style="position:absolute;top:14px;left:14px;background:{{ badge_bg }};color:{{ badge_color }};font-family:'Baloo 2',cursive;font-weight:800;font-size:12px;padding:6px 12px;border-radius:999px;">{{ badge_label }}</span>
             {%- endif -%}
-          </div>
+          </a>
           <div style="padding:22px 22px 24px;display:flex;flex-direction:column;flex:1;">
-            <h3 style="font-family:'Baloo 2',cursive;font-weight:700;font-size:21px;margin:0 0 6px;">{{ product.title }}</h3>
+            <h3 style="font-family:'Baloo 2',cursive;font-weight:700;font-size:21px;margin:0 0 6px;"><a href="{{ product.url }}" style="color:#432B21;">{{ product.title }}</a></h3>
             <p style="font-size:15px;color:#6b5348;line-height:1.5;margin:0 0 18px;flex:1;">{{ product.description | strip_html | truncate: 100 }}</p>
-            <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;">
-              <span style="font-family:'Baloo 2',cursive;font-weight:800;font-size:26px;">{{ product.price_min | money }}</span>
-              <span class="fp-btn3d" style="background:#FF6B5E;color:#fff;font-family:'Baloo 2',cursive;font-weight:700;font-size:15px;padding:11px 20px;border-radius:14px;box-shadow:0 5px 0 #d94a3d;">Vezi produsul</span>
+            <span style="font-family:'Baloo 2',cursive;font-weight:800;font-size:26px;margin-bottom:14px;">{% unless product.has_only_default_variant %}de la {% endunless %}{{ product.price_min | money }}</span>
+            <div class="fp-card-actions">
+              {%- if product.has_only_default_variant -%}
+                {%- if product.available -%}
+                  <form method="post" action="{{ routes.cart_add_url }}">
+                    <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+                    <input type="hidden" name="quantity" value="1">
+                    <button type="submit" class="fp-btn3d fp-card-btn fp-card-btn-primary">Adaugă în coș</button>
+                  </form>
+                {%- else -%}
+                  <button type="button" class="fp-btn3d fp-card-btn" disabled>Stoc epuizat</button>
+                {%- endif -%}
+              {%- else -%}
+                <a href="{{ product.url }}#variante" class="fp-btn3d fp-card-btn fp-card-btn-primary">Alege varianta</a>
+              {%- endif -%}
+              <a href="{{ product.url }}" class="fp-btn3d fp-card-btn fp-card-btn-secondary">Vezi produsul</a>
             </div>
           </div>
-        </a>
+        </div>
       {%- else -%}
         <div data-fp-empty style="grid-column:1/-1;text-align:center;padding:40px;background:#fff;border:2px dashed #f0e2d2;border-radius:24px;color:#6b5348;font-size:16px;">
           {{ section.settings.empty_state_text }}
@@ -315,8 +332,7 @@
         { "type": "trust_item", "settings": { "emoji": "↩️", "title": "Retur 14 zile", "subtitle": "Fără bătăi de cap" } },
         { "type": "trust_item", "settings": { "emoji": "🚚", "title": "Livrare 2–4 zile", "subtitle": "În toată țara" } },
         { "type": "faq_item", "settings": { "question": "Din ce material sunt făcute jucăriile?", "answer": "Din filament PLA de calitate, un plastic pe bază de plante, netoxic și sigur pentru copii peste 3 ani." } },
-        { "type": "faq_item", "settings": { "question": "Chiar se îndoaie fiecare parte?", "answer": "Da! Fiecare animăluț e printat dintr-o singură bucată, cu zeci de articulații care se mișcă fără să se rupă." } },
-        { "type": "faq_item", "settings": { "question": "Pot alege culoarea?", "answer": "Sigur. După comandă îți scriem ca să confirmăm culorile preferate pentru fiecare produs." } },
+        { "type": "faq_item", "settings": { "question": "Chiar se îndoaie fiecare parte?", "answer": "Da! Fiecare animăluț e printat dintr-o singură bucată, cu articulații care se mișcă fără să se rupă." } },
         { "type": "faq_item", "settings": { "question": "Cât durează livrarea?", "answer": "Totul e printat la comandă: producția durează 1–2 zile, apoi livrarea 2–4 zile lucrătoare în toată țara." } },
         { "type": "faq_item", "settings": { "question": "Pot returna produsul?", "answer": "Da, ai 14 zile pentru retur dacă produsul e nefolosit și în ambalajul original." } }
       ]

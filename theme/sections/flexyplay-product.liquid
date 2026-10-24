@@ -35,6 +35,10 @@
       <a href="#proces">Cum se face</a>
       <a href="#faq">Întrebări</a>
       <a href="#variante" class="fp-btn3d" style="background:#FF6B5E;color:#fff;font-family:'Baloo 2',cursive;font-weight:700;font-size:15px;padding:11px 20px;border-radius:16px;box-shadow:0 6px 0 #d94a3d;">Comandă acum</a>
+      <a href="{{ routes.cart_url }}" class="fp-cart" aria-label="Coș de cumpărături">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 7h12l-1 13H7L6 7z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg>
+        {%- if cart.item_count > 0 -%}<span class="fp-cart-count">{{ cart.item_count }}</span>{%- endif -%}
+      </a>
     </div>
   </nav>
 
@@ -339,9 +343,9 @@
     { "type": "text", "id": "default_cta_label", "label": "Text buton — variante normale", "default": "Adaugă în coș" },
     { "type": "paragraph", "content": "Subtitlurile și bulinele de sub fiecare variantă sunt opționale și se aplică pe poziție (1ª, 2ª, 3ª variantă a produsului), nu pe nume — dacă schimbi ordinea variantelor din Admin, verifică și aici." },
     { "type": "text", "id": "variant_1_subtitle", "label": "Subtitlu variantă 1", "default": "Animăluțul flexi, singur." },
-    { "type": "textarea", "id": "variant_1_bullets", "label": "Beneficii variantă 1 (una pe linie)", "default": "🐾 Mops complet articulat\n🌈 Culoare la alegere\n📦 Ambalaj standard" },
+    { "type": "textarea", "id": "variant_1_bullets", "label": "Beneficii variantă 1 (una pe linie)", "default": "🐾 Mops complet articulat\n📦 Ambalaj standard" },
     { "type": "text", "id": "variant_2_subtitle", "label": "Subtitlu variantă 2", "default": "Mopsul + toată brutăria." },
-    { "type": "textarea", "id": "variant_2_bullets", "label": "Beneficii variantă 2 (una pe linie)", "default": "🐾 Mops complet articulat\n🥐 Brutărie + accesorii\n🎁 Cutie cadou premium\n🌈 2 culori la alegere" },
+    { "type": "textarea", "id": "variant_2_bullets", "label": "Beneficii variantă 2 (una pe linie)", "default": "🐾 Mops complet articulat\n🥐 Brutărie + accesorii\n🎁 Cutie cadou premium" },
     { "type": "text", "id": "variant_3_subtitle", "label": "Subtitlu variantă 3", "default": "Setul de accesorii, separat." },
     { "type": "textarea", "id": "variant_3_bullets", "label": "Beneficii variantă 3 (una pe linie)", "default": "🥐 Croissante & cupcakes\n🏪 Tejghea miniatură\n📦 Ambalaj standard" },
     { "type": "header", "content": "Proces (\"De la idee la cutia ta\")" },

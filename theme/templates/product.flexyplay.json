@@ -33,10 +33,10 @@
         "feature_2": {
           "type": "feature",
           "settings": {
-            "emoji": "🎨",
+            "emoji": "🌱",
             "color": "#FFD166",
-            "title": "Culori la alegere",
-            "text": "După comandă îți scriem ca să confirmăm culorile preferate."
+            "title": "Material sigur",
+            "text": "PLA pe bază de plante, netoxic, sigur pentru copii peste 3 ani."
           }
         },
         "feature_3": {
@@ -140,14 +140,7 @@
           "type": "faq_item",
           "settings": {
             "question": "Chiar se îndoaie fiecare parte?",
-            "answer": "Da! Fiecare animăluț e printat dintr-o singură bucată, cu zeci de articulații care se mișcă fără să se rupă."
-          }
-        },
-        "faq_3": {
-          "type": "faq_item",
-          "settings": {
-            "question": "Pot alege culoarea?",
-            "answer": "Sigur. După comandă îți scriem ca să confirmăm culorile preferate pentru fiecare produs."
+            "answer": "Da! Fiecare animăluț e printat dintr-o singură bucată, cu articulații care se mișcă fără să se rupă."
           }
         },
         "faq_4": {
@@ -182,7 +175,6 @@
         "trust_4",
         "faq_1",
         "faq_2",
-        "faq_3",
         "faq_4",
         "faq_5"
       ],
