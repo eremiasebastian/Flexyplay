@@ -1,6 +1,7 @@
 """Resize product photos to 2048px, lift brightness/contrast on the luminance
 channel, then boost colour (the owner picked the strong setting: 1.32 saturation,
 target mean 170). Usage: prepare_photos.py <originals root> <out root> 1.32 170"""
+import sys, os, math
 from PIL import Image, ImageOps, ImageStat, ImageEnhance
 src_root, out_root, SAT, TARGET_MEAN = sys.argv[1], sys.argv[2], float(sys.argv[3]), float(sys.argv[4])
 MIN_STD = 48.0
