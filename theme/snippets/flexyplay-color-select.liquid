@@ -1,8 +1,9 @@
 {%- comment -%}
   Colour picker for products whose custom.culori metafield lists the colours,
-  one per line: "Name (code) | #HEX", e.g. "Cobalt Blue (10604) | #0055B8".
-  The hex is optional and only drives the colour preview. Renders nothing when
-  the metafield is empty.
+  one per line: "Name (code) | #HEX | preview image URL", e.g.
+  "Cyan (10603) | #0086D6 | https://cdn.shopify.com/.../twisty-dragon-egg-cyan.jpg".
+  The hex (swatch colour) and the image (photo shown when the colour is picked)
+  are optional. Renders nothing when the metafield is empty.
   "Name (code)" goes to the order as the "Culoare" property; customers only see
   the name.
   Usage:
@@ -17,13 +18,14 @@
       <div class="fp-swatch-grid">
         {%- for color in colors -%}
           {%- assign parts = color | split: '|' -%}
-          {%- assign color_value = parts.first | strip -%}
-          {%- assign color_hex = parts.last | strip -%}
+          {%- assign color_value = parts[0] | strip -%}
+          {%- assign color_hex = parts[1] | strip -%}
+          {%- assign color_image = parts[2] | strip -%}
           {%- unless color_hex contains '#' -%}{%- assign color_hex = '#efdcc7' -%}{%- endunless -%}
           {%- if color_value != blank -%}
             {%- assign color_name = color_value | split: ' (' | first -%}
             <label class="fp-swatch" title="{{ color_name | escape }}">
-              <input type="radio" name="properties[Culoare]" value="{{ color_value | escape }}" data-name="{{ color_name | escape }}" required aria-label="{{ color_name | escape }}">
+              <input type="radio" name="properties[Culoare]" value="{{ color_value | escape }}" data-name="{{ color_name | escape }}"{% if color_image != blank %} data-image="{{ color_image | escape }}"{% endif %} required aria-label="{{ color_name | escape }}">
               <span style="background:{{ color_hex }};"></span>
             </label>
           {%- endif -%}
@@ -37,11 +39,12 @@
         <option value="" disabled selected>Alege culoarea</option>
         {%- for color in colors -%}
           {%- assign parts = color | split: '|' -%}
-          {%- assign color_value = parts.first | strip -%}
-          {%- assign color_hex = parts.last | strip -%}
+          {%- assign color_value = parts[0] | strip -%}
+          {%- assign color_hex = parts[1] | strip -%}
+          {%- assign color_image = parts[2] | strip -%}
           {%- unless color_hex contains '#' -%}{%- assign color_hex = '#efdcc7' -%}{%- endunless -%}
           {%- if color_value != blank -%}
-            <option value="{{ color_value | escape }}" data-hex="{{ color_hex }}">{{ color_value | split: ' (' | first }}</option>
+            <option value="{{ color_value | escape }}" data-hex="{{ color_hex }}"{% if color_image != blank %} data-image="{{ color_image | escape }}"{% endif %}>{{ color_value | split: ' (' | first }}</option>
           {%- endif -%}
         {%- endfor -%}
       </select>

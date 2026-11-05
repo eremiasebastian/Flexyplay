@@ -61,6 +61,8 @@
   .fp-swatch:hover span { transform: scale(1.12); }
   .fp-swatch input:checked + span { transform: scale(1.12); box-shadow: 0 0 0 3px #432B21; }
   .fp-swatch input:focus-visible + span { outline: 2px solid #FF6B5E; outline-offset: 3px; }
+  .fp-preview-note { margin: 12px 0 0; text-align: center; font-size: 13px; font-style: italic; color: #6b5348; }
+  .fp-card-preview { position: absolute; right: 12px; bottom: 12px; background: rgba(255,255,255,.9); color: #432B21; font-size: 11px; font-weight: 800; padding: 4px 10px; border-radius: 999px; }
   .fp-color-select-wrap { position: relative; margin-bottom: 12px; }
   .fp-color-select-wrap .fp-variant-select { margin-bottom: 0; padding-left: 42px; }
   .fp-color-dot { position: absolute; left: 13px; top: 50%; transform: translateY(-50%); width: 20px; height: 20px; border-radius: 50%; border: 2px solid #fff; box-shadow: 0 0 0 1px #d9c6b2; pointer-events: none; background: conic-gradient(#FF6B5E, #FFD166, #16C344, #0086D6, #5E43B7, #FF6B5E); }
@@ -240,12 +242,24 @@
 
     // Colour previews: the dot next to the compact select follows the choice;
     // swatch groups show the chosen name and stay in sync on the same page.
+    // Colours with a preview image also swap the product photo.
+    function sizedImage(url, width) {
+      return url + (url.indexOf('?') > -1 ? '&' : '?') + 'width=' + width;
+    }
+
     function initColorPickers(root) {
       root.querySelectorAll('[data-fp-color-select]').forEach(function (select) {
         var dot = select.parentNode.querySelector('[data-fp-color-dot]');
         select.addEventListener('change', function () {
           var option = select.selectedOptions[0];
           if (dot && option && option.dataset.hex) dot.style.background = option.dataset.hex;
+          var card = select.closest('[data-fp-card]');
+          var img = card && card.querySelector('[data-fp-card-image]');
+          if (img && option && option.dataset.image) {
+            img.src = sizedImage(option.dataset.image, 700);
+            var label = card.querySelector('[data-fp-card-preview]');
+            if (label) label.hidden = false;
+          }
         });
       });
       root.addEventListener('change', function (e) {
@@ -259,6 +273,12 @@
           var label = group.querySelector('[data-fp-color-name]');
           if (checked && label) label.textContent = checked.dataset.name;
         });
+        var main = document.querySelector('[data-fp-main-image]');
+        if (main && input.dataset.image) {
+          main.src = sizedImage(input.dataset.image, 900);
+          var note = document.querySelector('[data-fp-preview-note]');
+          if (note) note.hidden = false;
+        }
       });
     }
 
