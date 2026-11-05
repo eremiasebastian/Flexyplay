@@ -21,7 +21,7 @@
 {%- liquid
   # FlexyPlay fallbacks, used until Online Store → Preferences has its own title / description / image
   assign fp_default_title = 'FlexyPlay — Jucării flexi articulate, printate 3D în România'
-  assign fp_default_description = 'Jucării flexi articulate și playseturi în miniatură, printate 3D cu drag în România. Ambalate cadou, livrare în 2–4 zile.'
+  assign fp_default_description = 'Jucării flexi articulate și playseturi în miniatură, printate 3D cu drag în România. Ambalate cadou, livrare în 3–6 zile.'
   assign fp_share_image = 'https://cdn.shopify.com/s/files/1/1052/6523/4260/files/flexyplay-share.jpg?v=1793882617'
   assign fp_title = page_title | default: fp_default_title
   if request.page_type == 'index' and page_title == shop.name

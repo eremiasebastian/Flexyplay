@@ -125,7 +125,7 @@
           "type": "trust_item",
           "settings": {
             "emoji": "🚚",
-            "title": "Livrare 2–4 zile",
+            "title": "Livrare 3–6 zile",
             "subtitle": "În toată țara"
           }
         },
@@ -147,7 +147,7 @@
           "type": "faq_item",
           "settings": {
             "question": "Cât durează livrarea?",
-            "answer": "Totul e printat la comandă: producția durează 1–2 zile, apoi livrarea 2–4 zile lucrătoare în toată țara."
+            "answer": "Totul e printat la comandă: producția durează 1–2 zile, apoi curierul îl livrează în 2–4 zile lucrătoare, oriunde în țară. În total, coletul ajunge la tine în 3–6 zile lucrătoare."
           }
         },
         "faq_5": {
