@@ -4,9 +4,12 @@
       "type": "flexyplay-cart",
       "settings": {
         "brand_name": "FlexyPlay",
-        "logo_image": "shopify://shop_images/flexyplay-logo-trim.png"
+        "logo_image": "shopify://shop_images/flexyplay-logo-trim.png",
+        "free_shipping_threshold": 150
       }
     }
   },
-  "order": ["flexyplay_cart"]
+  "order": [
+    "flexyplay_cart"
+  ]
 }
