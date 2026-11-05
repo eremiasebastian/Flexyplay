@@ -74,6 +74,19 @@
             <span style="background:#FFD166;color:#432B21;font-weight:800;font-size:13px;padding:5px 11px;border-radius:999px;">-{{ discount }}%</span>
           {%- endif -%}
         </div>
+        {%- assign include_lines = product.metafields.custom.ce_include.value | newline_to_br | split: '<br />' -%}
+        {%- assign include_text = product.metafields.custom.ce_include.value | strip -%}
+        {%- if include_text != blank -%}
+          <div class="fp-include">
+            <div class="fp-include-h">{{ section.settings.include_heading | default: '📦 Ce primești în cutie' }}</div>
+            <ul>
+              {%- for line in include_lines -%}
+                {%- assign include_line = line | strip -%}
+                {%- if include_line != blank -%}<li>{{ include_line }}</li>{%- endif -%}
+              {%- endfor -%}
+            </ul>
+          </div>
+        {%- endif -%}
         {%- if product.has_only_default_variant -%}
           {%- comment -%} No variants to choose: buy straight from the hero. {%- endcomment -%}
           {%- if product.available -%}
@@ -351,6 +364,7 @@
     { "type": "text", "id": "featured_variant_title", "label": "Numele variantei evidențiate", "info": "Trebuie să fie identic cu titlul unei variante reale a produsului (ex. \"Setul Complet\").", "default": "Setul Complet" },
     { "type": "text", "id": "featured_label", "label": "Etichetă variantă evidențiată", "default": "CEL MAI POPULAR" },
     { "type": "text", "id": "default_cta_label", "label": "Text buton — adaugă în coș", "default": "Adaugă în coș" },
+    { "type": "text", "id": "include_heading", "label": "Titlu listă „Ce include”", "default": "📦 Ce primești în cutie", "info": "Lista se completează la fiecare produs, în câmpul „Ce include” (metafield), câte un element pe linie." },
     { "type": "text", "id": "buy_now_label", "label": "Text buton — cumpără acum (merge direct la finalizarea comenzii)", "default": "Cumpără acum" },
     { "type": "paragraph", "content": "Subtitlurile și bulinele de sub fiecare variantă sunt opționale și se aplică pe poziție (1ª, 2ª, 3ª variantă a produsului), nu pe nume — dacă schimbi ordinea variantelor din Admin, verifică și aici." },
     { "type": "text", "id": "variant_1_subtitle", "label": "Subtitlu variantă 1", "default": "Animăluțul flexi, singur." },
