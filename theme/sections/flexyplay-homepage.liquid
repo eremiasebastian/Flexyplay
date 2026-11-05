@@ -77,10 +77,12 @@
     </div>
 
     <div data-fp-filters="fp-grid-{{ section.id }}" style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:40px;">
+      {%- comment -%} A category chip only shows when the collection has products tagged with it. {%- endcomment -%}
+      {%- assign grid_tags = section.settings.collection.all_tags -%}
       <button type="button" class="fp-chip fp-chip-active" data-fp-filter="toate">Toate</button>
-      <button type="button" class="fp-chip" data-fp-filter="playseturi">Playseturi complete</button>
-      <button type="button" class="fp-chip" data-fp-filter="figurine">Figurine flexi</button>
-      <button type="button" class="fp-chip" data-fp-filter="keychains">Keychains</button>
+      {%- if grid_tags contains 'playseturi' -%}<button type="button" class="fp-chip" data-fp-filter="playseturi">Playseturi complete</button>{%- endif -%}
+      {%- if grid_tags contains 'figurine' -%}<button type="button" class="fp-chip" data-fp-filter="figurine">Figurine flexi</button>{%- endif -%}
+      {%- if grid_tags contains 'keychains' -%}<button type="button" class="fp-chip" data-fp-filter="keychains">Keychains</button>{%- endif -%}
     </div>
 
     <div id="fp-grid-{{ section.id }}" class="fp-grid-3" style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;">
@@ -235,7 +237,7 @@
         <div style="display:flex;gap:56px;flex-wrap:wrap;">
           <div>
             <div style="font-family:'Baloo 2',cursive;font-weight:700;font-size:15px;color:#FFD166;margin-bottom:12px;">Magazin</div>
-            <div style="display:flex;flex-direction:column;gap:9px;font-size:15px;"><a href="#produse">Playseturi complete</a><a href="#produse">Figurine flexi</a><a href="#produse">Keychains</a></div>
+            <div style="display:flex;flex-direction:column;gap:9px;font-size:15px;">{% if grid_tags contains 'playseturi' %}<a href="#produse">Playseturi complete</a>{% endif %}{% if grid_tags contains 'figurine' %}<a href="#produse">Figurine flexi</a>{% endif %}{% if grid_tags contains 'keychains' %}<a href="#produse">Keychains</a>{% endif %}</div>
           </div>
           <div>
             <div style="font-family:'Baloo 2',cursive;font-weight:700;font-size:15px;color:#FFD166;margin-bottom:12px;">Ajutor</div>
@@ -282,7 +284,7 @@
     { "type": "collection", "id": "collection", "label": "Colecția afișată în grid" },
     { "type": "range", "id": "max_products", "label": "Nr. maxim de produse", "min": 3, "max": 12, "step": 1, "default": 6 },
     { "type": "textarea", "id": "empty_state_text", "label": "Text când colecția e goală", "default": "Momentan pregătim produsele — revino curând!" },
-    { "type": "paragraph", "content": "Filtrele Playseturi / Figurine / Keychains se bazează pe tag-uri de produs cu aceleași nume (playseturi, figurine, keychains). Badge-urile Bestseller / Nou / Preț prietenos se bazează pe tag-urile bestseller, nou, pret-prietenos." },
+    { "type": "paragraph", "content": "Filtrele Playseturi / Figurine / Keychains se bazează pe tag-uri de produs cu aceleași nume (playseturi, figurine, keychains) și apar doar când colecția are produse cu tag-ul respectiv. Badge-urile Bestseller / Nou / Preț prietenos se bazează pe tag-urile bestseller, nou, pret-prietenos." },
     { "type": "header", "content": "Proces (\"De la idee la cutia ta\")" },
     { "type": "text", "id": "process_heading", "label": "Titlu", "default": "De la idee la cutia ta" },
     { "type": "text", "id": "process_subheading", "label": "Subtitlu", "default": "Fiecare jucărie e făcută pe bune, pentru tine." },
