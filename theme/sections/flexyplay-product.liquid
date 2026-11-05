@@ -79,6 +79,7 @@
           {%- if product.available -%}
             <form method="post" action="{{ routes.cart_add_url }}" data-fp-add data-fp-title="{{ product.title | escape }}" class="fp-hero-actions">
               <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+              {%- render 'flexyplay-color-select', product: product -%}
               <input type="hidden" name="quantity" value="1">
               <button type="submit" class="fp-btn3d fp-card-btn fp-card-btn-primary fp-hero-btn">{{ section.settings.default_cta_label }}</button>
               <button type="submit" name="return_to" value="/checkout" data-fp-buy class="fp-btn3d fp-card-btn fp-card-btn-buy fp-hero-btn">{{ section.settings.buy_now_label }}</button>
@@ -208,6 +209,7 @@
             </ul>
           {%- endif -%}
           {%- if variant.available -%}
+            {%- render 'flexyplay-color-select', product: product -%}
             <div class="fp-card-actions">
               <button type="submit" class="fp-btn3d fp-card-btn {% if is_featured %}fp-card-btn-light{% else %}fp-card-btn-primary{% endif %}">{{ section.settings.default_cta_label }}</button>
               <button type="submit" name="return_to" value="/checkout" data-fp-buy class="fp-btn3d fp-card-btn fp-card-btn-buy">{{ section.settings.buy_now_label }}</button>

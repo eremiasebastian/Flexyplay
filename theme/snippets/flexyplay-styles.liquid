@@ -49,7 +49,8 @@
   .fp-card-actions { display: flex; gap: 10px; }
   .fp-card-btn { flex: 1; width: 100%; display: block; text-align: center; font-family: 'Baloo 2', cursive; font-weight: 700; font-size: 15px; padding: 11px 10px; border-radius: 14px; white-space: nowrap; }
   .fp-root a.fp-card-btn-primary, .fp-card-btn-primary { background: #FF6B5E; color: #fff; box-shadow: 0 5px 0 #d94a3d; }
-  .fp-hero-actions { display: flex; gap: 12px; max-width: 460px; }
+  .fp-hero-actions { display: flex; flex-wrap: wrap; gap: 12px; max-width: 460px; }
+  .fp-hero-actions .fp-variant-select { flex: 1 1 100%; margin-bottom: 0; }
   .fp-hero-btn { font-size: 18px; padding: 16px 14px; border-radius: 18px; }
   .fp-root a.fp-hero-more { display: inline-block; margin-top: 18px; font-weight: 800; font-size: 15px; color: #6b5348; }
   .fp-root a.fp-hero-more:hover { color: #FF6B5E; }
@@ -244,6 +245,8 @@
           var title = form.dataset.fpTitle || 'Produsul';
           var picked = form.querySelector('select[name="id"]');
           if (picked && picked.selectedOptions[0]) title += ' – ' + picked.selectedOptions[0].dataset.title;
+          var color = form.querySelector('select[name="properties[Culoare]"]');
+          if (color && color.value) title += ' (' + color.selectedOptions[0].textContent.trim() + ')';
           var label = btn.innerHTML;
           var cartLink = document.querySelector('.fp-cart');
           var cartUrl = cartLink ? cartLink.getAttribute('href') : form.getAttribute('action').replace(/\/add$/, '');

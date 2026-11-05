@@ -120,6 +120,12 @@
                 {%- unless item.product.has_only_default_variant -%}
                   <p class="fp-cart-variant">{{ item.variant.title }}</p>
                 {%- endunless -%}
+                {%- for property in item.properties -%}
+                  {%- assign property_first_char = property.first | slice: 0 -%}
+                  {%- if property.last != blank and property_first_char != '_' -%}
+                    <p class="fp-cart-variant">{{ property.first }}: {{ property.last | split: ' (' | first }}</p>
+                  {%- endif -%}
+                {%- endfor -%}
                 <p class="fp-cart-unit">{{ item.final_price | money }} / bucată</p>
                 <div class="fp-cart-controls">
                   <div class="fp-qty">

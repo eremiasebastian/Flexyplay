@@ -3,7 +3,10 @@
     "folder": "Brutarie",
     "title": "Brutărie",
     "emoji": "🐶🥐",
-    "tags": ["playseturi", "bestseller"],
+    "tags": [
+      "playseturi",
+      "bestseller"
+    ],
     "alt": "Brutăria Pug's Bakery cu mopsuleți flexi",
     "descriptionHtml": "<p>O brutărie în miniatură, cu firma <strong>Pug's Bakery</strong>, ținută deschisă de o gașcă de mopsuleți brutari. Pe tejghea și pe rafturi te așteaptă croissante, chifle și franzele, iar mopsuleții cu bonețică de bucătar și eșarfă roșie sunt complet articulați: îi așezi la tejghea, lângă vitrină sau direct în mâna copilului.</p><ul><li>🥐 Brutărie cu tejghea, vitrină, rafturi și firma „Pug's Bakery”</li><li>🐶 Mopsuleți flexi complet articulați</li><li>🍞 Croissante, chifle și franzele în miniatură</li></ul><p>Printat 3D la comandă, în România, din PLA sigur pentru copii peste 3 ani, și ambalat cadou.</p>"
   },
@@ -11,15 +14,21 @@
     "folder": "Ou_Dragon",
     "title": "Ou Dragon",
     "emoji": "🥚🐉",
-    "tags": ["figurine", "nou"],
+    "tags": [
+      "figurine",
+      "nou"
+    ],
     "alt": "Ou de dragon flexi care se desface într-un dragon",
-    "descriptionHtml": "<p>Un ou de dragon acoperit cu solzi care ascunde o surpriză: îl desfaci și devine un dragon flexi lung și ondulat. Fiecare solz e o articulație, așa că dragonul se răsucește și se mișcă fluid, iar când ai terminat joaca îl strângi la loc în formă de ou.</p><ul><li>🥚 Se închide în formă de ou, se desface în dragon</li><li>🐉 Solzi articulați care se mișcă fluid</li><li>✨ Perfect și ca jucărie antistres, pe birou</li></ul><p>Printat 3D la comandă, în România, din PLA sigur pentru copii peste 3 ani, și ambalat cadou.</p>"
+    "descriptionHtml": "<p>Un ou de dragon acoperit cu solzi care ascunde o surpriză: îl desfaci și devine un dragon flexi lung și ondulat. Fiecare solz e o articulație, așa că dragonul se răsucește și se mișcă fluid, iar când ai terminat joaca îl strângi la loc în formă de ou.</p><ul><li>🥚 Se închide în formă de ou, se desface în dragon</li><li>🐉 Solzi articulați care se mișcă fluid</li><li>✨ Perfect și ca jucărie antistres, pe birou</li><li>🎨 Culoarea o alegi tu: oricare dintre culorile Bambu Lab PLA Basic</li></ul><p>Printat 3D la comandă, în România, din PLA sigur pentru copii peste 3 ani, și ambalat cadou.</p>"
   },
   {
     "folder": "Pompieri",
     "title": "Pompieri",
     "emoji": "🐶🚒",
-    "tags": ["playseturi", "nou"],
+    "tags": [
+      "playseturi",
+      "nou"
+    ],
     "alt": "Stația de pompieri Fire Station cu dalmațieni flexi",
     "descriptionHtml": "<p>Stația de pompieri <strong>Fire Station</strong> în miniatură, cu dalmațieni pompieri gata de intervenție. Garajul are ușă rulantă și scară, iar în jur găsești stingătoare, hidrant, con de semnalizare și furtunul întins pe stradă. Cățeii dalmațieni cu cască roșie sunt complet articulați, ca să-i pui în orice poziție.</p><ul><li>🚒 Stație cu garaj, scară, hidrant, stingătoare și con</li><li>🐶 Dalmațieni flexi complet articulați</li><li>💧 Bază cu stradă, bălți și furtun</li></ul><p>Printat 3D la comandă, în România, din PLA sigur pentru copii peste 3 ani, și ambalat cadou.</p>"
   },
@@ -27,7 +36,10 @@
     "folder": "Techel_Craciun",
     "title": "Techel Crăciun",
     "emoji": "🐶🎄",
-    "tags": ["playseturi", "nou"],
+    "tags": [
+      "playseturi",
+      "nou"
+    ],
     "alt": "Decor de Crăciun cu techei flexi",
     "descriptionHtml": "<p>Un colț de Crăciun în miniatură: șemineu cu ciorapi, lumânări și coroniță, un brăduț împodobit, cadouri și un pătuț numai bun pentru un techel obosit după petrecere. Techeii flexi poartă căciuliță de Moș Crăciun și pulover roșu, iar corpul lor lung e complet articulat.</p><ul><li>🎄 Decor cu șemineu, brad, cadouri și pătuț</li><li>🐶 Techei flexi complet articulați</li><li>🎁 Cadou de sărbători, gata de pus sub brad</li></ul><p>Printat 3D la comandă, în România, din PLA sigur pentru copii peste 3 ani, și ambalat cadou.</p>"
   }

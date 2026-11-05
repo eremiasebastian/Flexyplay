@@ -1,0 +1,19 @@
+{%- comment -%}
+  Colour picker for products whose custom.culori metafield lists the colours,
+  one per line (e.g. "Jade White (10100)"). Renders nothing otherwise.
+  The full value, code included, goes to the order as the "Culoare" property;
+  customers only see the name.
+  Usage: {% render 'flexyplay-color-select', product: product %}
+{%- endcomment -%}
+{%- assign colors = product.metafields.custom.culori.value | newline_to_br | split: '<br />' -%}
+{%- if colors.size > 0 -%}
+  <select name="properties[Culoare]" class="fp-variant-select" required aria-label="Alege culoarea">
+    <option value="" disabled selected>🎨 Alege culoarea</option>
+    {%- for color in colors -%}
+      {%- assign color_value = color | strip -%}
+      {%- if color_value != blank -%}
+        <option value="{{ color_value | escape }}">{{ color_value | split: ' (' | first }}</option>
+      {%- endif -%}
+    {%- endfor -%}
+  </select>
+{%- endif -%}
