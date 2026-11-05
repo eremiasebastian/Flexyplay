@@ -1,0 +1,65 @@
+{%- comment -%}
+  FlexyPlay footer, shared by the homepage, product and cart sections and by
+  the layout on every other page (policies, contact, search, 404...).
+  Help and legal links point to the store's real policies/pages and are left
+  out when the policy isn't filled in yet (Settings → Policies).
+  Params (all optional):
+    brand_name  - wordmark, default FlexyPlay
+    tagline     - short text under the wordmark
+    signature   - text at the bottom right
+    shop_links  - HTML for the "Magazin" column (default: link to the shop)
+    faq_url     - link for "Întrebări" (default: homepage FAQ)
+    shipping_url, contact_url - override the automatic help links
+{%- endcomment -%}
+{%- liquid
+  assign fp_brand = brand_name | default: 'FlexyPlay'
+  assign fp_tagline = tagline | default: 'Jucării flexi articulate, printate 3D cu drag în România.'
+  assign fp_signature = signature | default: 'Printat cu drag în România 🇷🇴'
+  assign fp_faq = faq_url | default: '/#faq'
+
+  assign fp_shipping_url = shipping_url | default: shop.shipping_policy.url | default: shop.refund_policy.url
+  assign fp_contact_url = contact_url | default: pages['contact'].url
+  if fp_contact_url == blank and shop.email != blank
+    assign fp_contact_url = 'mailto:' | append: shop.email
+  endif
+-%}
+<footer class="fp-footer" style="background:#2a1a13;color:#FFF6EC;padding:56px 24px 34px;">
+  <div style="max-width:1160px;margin:0 auto;">
+    <div style="display:flex;flex-wrap:wrap;gap:40px;justify-content:space-between;align-items:flex-start;padding-bottom:34px;border-bottom:1px solid #4a352b;">
+      <div style="max-width:300px;">
+        <span style="font-family:'Baloo 2',cursive;font-weight:800;font-size:28px;color:#fff;">{{ fp_brand }}</span>
+        <p style="font-size:15px;color:#c9b3a6;line-height:1.6;margin:12px 0 0;">{{ fp_tagline }}</p>
+      </div>
+      <div style="display:flex;gap:28px 56px;flex-wrap:wrap;">
+        <div>
+          <div class="fp-footer-h">Magazin</div>
+          <div class="fp-footer-col">
+            {%- if shop_links != blank -%}{{ shop_links }}{%- else -%}<a href="{{ routes.root_url }}#produse">Toate produsele</a>{%- endif -%}
+          </div>
+        </div>
+        <div>
+          <div class="fp-footer-h">Ajutor</div>
+          <div class="fp-footer-col">
+            <a href="{{ fp_faq }}">Întrebări</a>
+            {%- if fp_shipping_url != blank -%}<a href="{{ fp_shipping_url }}">Livrare &amp; retur</a>{%- endif -%}
+            {%- if fp_contact_url != blank -%}<a href="{{ fp_contact_url }}">Contact</a>{%- endif -%}
+          </div>
+        </div>
+        <div>
+          <div class="fp-footer-h">Legal</div>
+          <div class="fp-footer-col">
+            {%- if shop.terms_of_service != blank -%}<a href="{{ shop.terms_of_service.url }}">Termeni și condiții</a>{%- endif -%}
+            {%- if shop.privacy_policy != blank -%}<a href="{{ shop.privacy_policy.url }}">Confidențialitate</a>{%- endif -%}
+            {%- if shop.refund_policy != blank -%}<a href="{{ shop.refund_policy.url }}">Politica de retur</a>{%- endif -%}
+            {%- if shop.shipping_policy != blank -%}<a href="{{ shop.shipping_policy.url }}">Politica de livrare</a>{%- endif -%}
+            <a href="https://anpc.ro/ce-este-sal/" target="_blank" rel="noopener">ANPC – SAL</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="padding-top:22px;font-size:13px;color:#9a8377;display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;">
+      <span>© {{ 'now' | date: '%Y' }} {{ fp_brand }}. Toate drepturile rezervate.</span>
+      <span>{{ fp_signature }}</span>
+    </div>
+  </div>
+</footer>

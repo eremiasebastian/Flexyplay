@@ -228,30 +228,8 @@
   </section>
 
   <!-- FOOTER -->
-  <footer class="fp-footer" style="background:#2a1a13;color:#FFF6EC;padding:56px 24px 34px;">
-    <div style="max-width:1160px;margin:0 auto;">
-      <div style="display:flex;flex-wrap:wrap;gap:40px;justify-content:space-between;align-items:flex-start;padding-bottom:34px;border-bottom:1px solid #4a352b;">
-        <div style="max-width:300px;">
-          <span style="font-family:'Baloo 2',cursive;font-weight:800;font-size:28px;color:#fff;">{{ section.settings.brand_name | default: shop.name }}</span>
-          <p style="font-size:15px;color:#c9b3a6;line-height:1.6;margin:12px 0 0;">{{ section.settings.footer_tagline }}</p>
-        </div>
-        <div style="display:flex;gap:56px;flex-wrap:wrap;">
-          <div>
-            <div style="font-family:'Baloo 2',cursive;font-weight:700;font-size:15px;color:#FFD166;margin-bottom:12px;">Magazin</div>
-            <div style="display:flex;flex-direction:column;gap:9px;font-size:15px;">{% if grid_tags contains 'playseturi' %}<a href="#produse">Playseturi complete</a>{% endif %}{% if grid_tags contains 'figurine' %}<a href="#produse">Figurine flexi</a>{% endif %}{% if grid_tags contains 'keychains' %}<a href="#produse">Keychains</a>{% endif %}</div>
-          </div>
-          <div>
-            <div style="font-family:'Baloo 2',cursive;font-weight:700;font-size:15px;color:#FFD166;margin-bottom:12px;">Ajutor</div>
-            <div style="display:flex;flex-direction:column;gap:9px;font-size:15px;"><a href="#faq">Întrebări</a><a href="{{ section.settings.shipping_returns_url | default: '#' }}">Livrare &amp; retur</a><a href="{{ section.settings.contact_url | default: '#' }}">Contact</a></div>
-          </div>
-        </div>
-      </div>
-      <div style="padding-top:22px;font-size:13px;color:#9a8377;display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;">
-        <span>© {{ 'now' | date: '%Y' }} {{ section.settings.brand_name | default: shop.name }}. Toate drepturile rezervate.</span>
-        <span>{{ section.settings.footer_signature }}</span>
-      </div>
-    </div>
-  </footer>
+  {%- capture fp_shop_links -%}{% if grid_tags contains 'playseturi' %}<a href="#produse">Playseturi complete</a>{% endif %}{% if grid_tags contains 'figurine' %}<a href="#produse">Figurine flexi</a>{% endif %}{% if grid_tags contains 'keychains' %}<a href="#produse">Keychains</a>{% endif %}<a href="#produse">Toate produsele</a>{%- endcapture -%}
+  {%- render 'flexyplay-footer', brand_name: section.settings.brand_name, tagline: section.settings.footer_tagline, signature: section.settings.footer_signature, faq_url: '#faq', shipping_url: section.settings.shipping_returns_url, contact_url: section.settings.contact_url, shop_links: fp_shop_links -%}
 
 </div>
 
@@ -297,8 +275,8 @@
     { "type": "header", "content": "Footer" },
     { "type": "textarea", "id": "footer_tagline", "label": "Descriere brand", "default": "Jucării flexi articulate, printate 3D cu drag în România." },
     { "type": "text", "id": "footer_signature", "label": "Linie finală, dreapta", "default": "Printat cu drag în România 🇷🇴" },
-    { "type": "url", "id": "shipping_returns_url", "label": "Link livrare & retur" },
-    { "type": "url", "id": "contact_url", "label": "Link contact" }
+    { "type": "url", "id": "shipping_returns_url", "label": "Link livrare & retur", "info": "Gol = automat, politica de livrare (sau de retur) din Setări → Politici." },
+    { "type": "url", "id": "contact_url", "label": "Link contact", "info": "Gol = automat, pagina /pages/contact sau emailul magazinului." }
   ],
   "blocks": [
     {

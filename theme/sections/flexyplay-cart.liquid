@@ -201,13 +201,8 @@
   </main>
 
   <!-- FOOTER -->
-  <footer class="fp-footer" style="background:#2a1a13;color:#FFF6EC;padding:40px 24px 30px;">
-    <div style="max-width:1160px;margin:0 auto;display:flex;flex-wrap:wrap;gap:12px 40px;justify-content:space-between;align-items:center;font-size:14px;">
-      <span style="font-family:'Baloo 2',cursive;font-weight:800;font-size:24px;color:#fff;">{{ section.settings.brand_name | default: shop.name }}</span>
-      <span style="color:#c9b3a6;">{{ section.settings.footer_tagline }}</span>
-      <span style="color:#9a8377;">© {{ 'now' | date: '%Y' }} {{ section.settings.brand_name | default: shop.name }}</span>
-    </div>
-  </footer>
+  {%- capture fp_shop_links -%}<a href="{{ routes.root_url }}#produse">Toate produsele</a>{%- endcapture -%}
+  {%- render 'flexyplay-footer', brand_name: section.settings.brand_name, tagline: section.settings.footer_tagline, shop_links: fp_shop_links -%}
 </div>
 
 <script>

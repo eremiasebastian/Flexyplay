@@ -110,7 +110,8 @@
       "color1": "#333333",
       "color2": "#dfdfdf",
       "color3": "#FF6B5C"
-    }
+    },
+    "favicon": "shopify://shop_images/flexyplay-favicon.png"
   },
   "presets": {
     "Horizon": {

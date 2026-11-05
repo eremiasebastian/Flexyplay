@@ -1,0 +1,37 @@
+{%- comment -%}
+  FlexyPlay header / footer for the pages that don't use a FlexyPlay section
+  (policies, contact, search, 404, collections, account). Rendered from
+  layout/theme.liquid; the homepage, product and cart pages have their own.
+  Usage: {% render 'flexyplay-site-chrome', part: 'header' %} / part: 'footer'
+{%- endcomment -%}
+{%- if part == 'header' -%}
+  {%- render 'flexyplay-styles' -%}
+  {%- liquid
+    assign fp_logo = images['flexyplay-logo-trim.png']
+    if fp_logo == blank
+      assign fp_logo = settings.logo
+    endif
+  -%}
+  <div class="fp-root fp-chrome">
+    <nav class="fp-nav fp-nav-static">
+      {%- if fp_logo != blank -%}
+        <a href="{{ routes.root_url }}" class="fp-logo"><img src="{{ fp_logo | image_url: width: 200 }}" alt="{{ shop.name }}"></a>
+      {%- else -%}
+        <a href="{{ routes.root_url }}" class="fp-logo">{{ shop.name }}</a>
+      {%- endif -%}
+      <div class="fp-nav-links">
+        <a href="{{ routes.root_url }}#produse">Produse</a>
+        <a href="{{ routes.root_url }}#faq">Întrebări</a>
+        <a href="{{ routes.root_url }}#produse" class="fp-btn3d" style="background:#FF6B5E;color:#fff;font-family:'Baloo 2',cursive;font-weight:700;font-size:15px;padding:11px 20px;border-radius:16px;box-shadow:0 6px 0 #d94a3d;">Vezi colecția</a>
+        <a href="{{ routes.cart_url }}" class="fp-cart" aria-label="Coș de cumpărături">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 7h12l-1 13H7L6 7z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg>
+          {%- if cart.item_count > 0 -%}<span class="fp-cart-count">{{ cart.item_count }}</span>{%- endif -%}
+        </a>
+      </div>
+    </nav>
+  </div>
+{%- elsif part == 'footer' -%}
+  <div class="fp-root fp-chrome">
+    {%- render 'flexyplay-footer' -%}
+  </div>
+{%- endif -%}
