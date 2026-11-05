@@ -1,19 +1,50 @@
 {%- comment -%}
   Colour picker for products whose custom.culori metafield lists the colours,
-  one per line (e.g. "Jade White (10100)"). Renders nothing otherwise.
-  The full value, code included, goes to the order as the "Culoare" property;
-  customers only see the name.
-  Usage: {% render 'flexyplay-color-select', product: product %}
+  one per line: "Name (code) | #HEX", e.g. "Cobalt Blue (10604) | #0055B8".
+  The hex is optional and only drives the colour preview. Renders nothing when
+  the metafield is empty.
+  "Name (code)" goes to the order as the "Culoare" property; customers only see
+  the name.
+  Usage:
+    {% render 'flexyplay-color-select', product: product %}                     compact select + colour dot
+    {% render 'flexyplay-color-select', product: product, style: 'swatches' %}  clickable colour swatches
 {%- endcomment -%}
 {%- assign colors = product.metafields.custom.culori.value | newline_to_br | split: '<br />' -%}
 {%- if colors.size > 0 -%}
-  <select name="properties[Culoare]" class="fp-variant-select" required aria-label="Alege culoarea">
-    <option value="" disabled selected>🎨 Alege culoarea</option>
-    {%- for color in colors -%}
-      {%- assign color_value = color | strip -%}
-      {%- if color_value != blank -%}
-        <option value="{{ color_value | escape }}">{{ color_value | split: ' (' | first }}</option>
-      {%- endif -%}
-    {%- endfor -%}
-  </select>
+  {%- if style == 'swatches' -%}
+    <fieldset class="fp-swatches" data-fp-swatches>
+      <legend>Culoare: <span data-fp-color-name>alege din paletă</span></legend>
+      <div class="fp-swatch-grid">
+        {%- for color in colors -%}
+          {%- assign parts = color | split: '|' -%}
+          {%- assign color_value = parts.first | strip -%}
+          {%- assign color_hex = parts.last | strip -%}
+          {%- unless color_hex contains '#' -%}{%- assign color_hex = '#efdcc7' -%}{%- endunless -%}
+          {%- if color_value != blank -%}
+            {%- assign color_name = color_value | split: ' (' | first -%}
+            <label class="fp-swatch" title="{{ color_name | escape }}">
+              <input type="radio" name="properties[Culoare]" value="{{ color_value | escape }}" data-name="{{ color_name | escape }}" required aria-label="{{ color_name | escape }}">
+              <span style="background:{{ color_hex }};"></span>
+            </label>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    </fieldset>
+  {%- else -%}
+    <div class="fp-color-select-wrap">
+      <span class="fp-color-dot" data-fp-color-dot aria-hidden="true"></span>
+      <select name="properties[Culoare]" class="fp-variant-select" required aria-label="Alege culoarea" data-fp-color-select>
+        <option value="" disabled selected>Alege culoarea</option>
+        {%- for color in colors -%}
+          {%- assign parts = color | split: '|' -%}
+          {%- assign color_value = parts.first | strip -%}
+          {%- assign color_hex = parts.last | strip -%}
+          {%- unless color_hex contains '#' -%}{%- assign color_hex = '#efdcc7' -%}{%- endunless -%}
+          {%- if color_value != blank -%}
+            <option value="{{ color_value | escape }}" data-hex="{{ color_hex }}">{{ color_value | split: ' (' | first }}</option>
+          {%- endif -%}
+        {%- endfor -%}
+      </select>
+    </div>
+  {%- endif -%}
 {%- endif -%}
