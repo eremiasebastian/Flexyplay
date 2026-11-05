@@ -57,6 +57,10 @@
   .fp-free-ship-bar { height: 10px; background: #f6ece1; border-radius: 999px; overflow: hidden; }
   .fp-free-ship-bar span { display: block; height: 100%; border-radius: 999px; background: linear-gradient(90deg, #FFD166, #FF6B5E); transition: width .4s ease; }
   .fp-free-ship-done .fp-free-ship-bar span { background: #2EC4B6; }
+  .fp-express { margin-top: 16px; }
+  .fp-express-label { display: flex; align-items: center; gap: 10px; margin: 0 0 10px; font-size: 13px; font-weight: 700; color: #9a8377; }
+  .fp-express-label::before, .fp-express-label::after { content: ""; flex: 1; height: 2px; background: #f6ece1; }
+  .fp-express .additional-checkout-buttons, .fp-express shopify-accelerated-checkout-cart { --shopify-accelerated-checkout-button-border-radius: 16px; --shopify-accelerated-checkout-button-block-size: 48px; }
   [data-fp-cart-body] { transition: opacity .2s ease; }
   [data-fp-cart-body].fp-cart-busy { opacity: .55; pointer-events: none; }
   @media (max-width: 900px) {
@@ -178,6 +182,13 @@
           <form action="{{ routes.cart_url }}" method="post">
             <button type="submit" name="checkout" class="fp-btn3d fp-checkout-btn">Finalizează comanda</button>
           </form>
+          {%- comment -%} Apple Pay / Google Pay / Shop Pay express buttons; Shopify renders them once the wallets are enabled. {%- endcomment -%}
+          {%- if additional_checkout_buttons -%}
+            <div class="fp-express">
+              <p class="fp-express-label">sau plătește rapid cu</p>
+              {{ content_for_additional_checkout_buttons }}
+            </div>
+          {%- endif -%}
           <a href="{{ routes.root_url }}#produse" class="fp-cart-continue">← Continuă cumpărăturile</a>
           <ul class="fp-cart-perks">
             <li>🚚 Livrare 2–4 zile în toată țara</li>
