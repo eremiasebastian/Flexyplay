@@ -19,6 +19,15 @@
   assign v1_bullets = section.settings.variant_1_bullets | newline_to_br | split: '<br />'
   assign v2_bullets = section.settings.variant_2_bullets | newline_to_br | split: '<br />'
   assign v3_bullets = section.settings.variant_3_bullets | newline_to_br | split: '<br />'
+  assign desc_first = product.description
+  assign desc_rest = ''
+  if product.description contains '</p>'
+    assign desc_first = product.description | split: '</p>' | first | append: '</p>'
+    assign desc_rest = product.description | remove_first: desc_first
+  endif
+  if section.settings.subtitle != blank
+    assign desc_rest = product.description
+  endif
 -%}
 
 <div class="fp-root" id="fp-product-{{ section.id }}">
@@ -56,7 +65,7 @@
             {{ product.title }}
           {%- endif -%}
         </h1>
-        <p style="font-size:19px;line-height:1.6;color:#6b5348;max-width:460px;margin:0 0 30px;">{{ section.settings.subtitle | default: product.description | strip_html | truncate: 220 }}</p>
+        <p style="font-size:19px;line-height:1.6;color:#6b5348;max-width:460px;margin:0 0 30px;">{% if section.settings.subtitle != blank %}{{ section.settings.subtitle }}{% else %}{{ desc_first | strip_html }}{% endif %}</p>
         <div style="display:flex;align-items:baseline;gap:14px;margin-bottom:30px;">
           <span style="font-family:'Baloo 2',cursive;font-weight:800;font-size:42px;color:#432B21;">{{ product.price_min | money }}</span>
           {%- if product.compare_at_price_min > product.price_min -%}
@@ -95,6 +104,16 @@
               <span style="font-size:clamp(96px,13vw,180px);line-height:1;letter-spacing:-0.08em;white-space:nowrap;" aria-hidden="true">{{ product.metafields.custom.emoji.value | default: '🧸' }}</span>
             {%- endif -%}
           </div>
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'floating_badge' -%}
+              {%- case block.settings.position -%}
+                {%- when 'top_left' -%}{%- assign pos = '--r:-6deg;top:-14px;left:-26px;' -%}
+                {%- when 'bottom_right' -%}{%- assign pos = '--r:5deg;bottom:24px;right:-30px;' -%}
+                {%- else -%}{%- assign pos = '--r:-3deg;bottom:-18px;left:30px;' -%}
+              {%- endcase -%}
+              <div style="{{ pos }}position:absolute;animation:fp-float-sm 5.5s ease-in-out infinite;background:{{ block.settings.bg_color }};border-radius:16px;padding:10px 15px;box-shadow:0 12px 24px rgba(67,43,33,.14);font-weight:800;font-size:14px;color:{{ block.settings.text_color }};" {{ block.shopify_attributes }}>{{ block.settings.text }}</div>
+            {%- endif -%}
+          {%- endfor -%}
         </div>
         {%- if product.images.size > 1 -%}
           <div style="display:flex;gap:10px;justify-content:center;margin-top:14px;flex-wrap:wrap;">
@@ -105,16 +124,6 @@
             {%- endfor -%}
           </div>
         {%- endif -%}
-        {%- for block in section.blocks -%}
-          {%- if block.type == 'floating_badge' -%}
-            {%- case block.settings.position -%}
-              {%- when 'top_left' -%}{%- assign pos = '--r:-6deg;top:-14px;left:-26px;' -%}
-              {%- when 'bottom_right' -%}{%- assign pos = '--r:5deg;bottom:24px;right:-30px;' -%}
-              {%- else -%}{%- assign pos = '--r:-3deg;bottom:-18px;left:30px;' -%}
-            {%- endcase -%}
-            <div style="{{ pos }}position:absolute;animation:fp-float-sm 5.5s ease-in-out infinite;background:{{ block.settings.bg_color }};border-radius:16px;padding:10px 15px;box-shadow:0 12px 24px rgba(67,43,33,.14);font-weight:800;font-size:14px;color:{{ block.settings.text_color }};" {{ block.shopify_attributes }}>{{ block.settings.text }}</div>
-          {%- endif -%}
-        {%- endfor -%}
       </div>
     </div>
   </header>
@@ -139,6 +148,10 @@
       <h2 class="fp-section-h2" style="font-family:'Baloo 2',cursive;font-weight:800;font-size:40px;line-height:1.08;margin:0 0 14px;">{{ section.settings.demo_heading }}</h2>
       <p style="font-size:18px;color:#6b5348;line-height:1.6;margin:0 auto;max-width:560px;">{{ section.settings.demo_subheading }}</p>
     </div>
+    {%- assign desc_rest_text = desc_rest | strip_html | strip -%}
+    {%- if desc_rest_text != blank -%}
+      <div class="fp-reveal fp-desc">{{ desc_rest }}</div>
+    {%- endif -%}
     <div class="fp-grid-4" style="display:grid;grid-template-columns:repeat(4,1fr);gap:18px;">
       {%- for block in section.blocks -%}
         {%- if block.type == 'feature' -%}
