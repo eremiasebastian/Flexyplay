@@ -2,20 +2,18 @@
 
 **Unde le pui:** Shopify Admin → **Settings → Policies**. Fiecare text de mai jos merge în câmpul cu același nume. Copiază doar textul de sub titlul mare (fără titlu, Shopify pune titlul singur).
 
-**Înainte să le publici, înlocuiește tot ce e între [paranteze pătrate]:**
+**Datele firmei sunt completate** (CLEVNY RO S.R.L., verificată la ANAF: activă, neplătitoare de TVA).
+
+**Mai înlocuiește ce a rămas între [paranteze pătrate]:**
 
 | Ce | Exemplu |
 |---|---|
-| [DENUMIREA FIRMEI] | FlexyPlay SRL / Popescu Ion PFA |
-| [CUI] | RO12345678 sau 12345678 |
-| [NR. REG. COM.] | J40/1234/2025 (sau F... pentru PFA) |
-| [ADRESA SEDIULUI] | Str. ..., nr. ..., oraș, județ |
-| [ADRESA PENTRU RETURURI] | dacă e alta decât sediul |
-| [EMAIL] | contact@flexyplay.ro |
+| [EMAIL] | adresa la care răspunzi clienților, ex. contact@flexyplay.ro |
 | [TELEFON] | 07xx xxx xxx |
 | [CURIER] | Fan Courier / Sameday / Cargus etc. |
 | [COST LIVRARE] | ex. 19 lei |
-| [TVA] | alege una dintre cele două variante din Termeni, art. 4 |
+
+Adresa pentru retururi e pusă la sediul firmei (Voluntari). Dacă retururile trebuie trimise în altă parte, schimb-o în Politica de retur.
 
 Dacă **nu** activezi plata ramburs, șterge mențiunile despre ramburs (Livrare și Termeni).
 
@@ -33,7 +31,7 @@ Ca să returnezi un produs, trimite-ne în cele 14 zile un mesaj la **[EMAIL]** 
 
 **Cum trimiți produsele înapoi**
 
-- Trimite produsele la adresa: **[ADRESA PENTRU RETURURI]**, cel târziu în 14 zile de la data la care ne-ai anunțat returul.
+- Trimite produsele la adresa: **CLEVNY RO S.R.L., Str. Predeal nr. 19, camera 6, oraș Voluntari, jud. Ilfov**, cel târziu în 14 zile de la data la care ne-ai anunțat returul.
 - Costul transportului pentru retur este suportat de tine.
 - Produsele trebuie să fie în aceeași stare în care le-ai primit, cu toate piesele setului, ideal în ambalajul original. Ești responsabil(ă) doar pentru diminuarea valorii produselor cauzată de folosirea lor altfel decât era necesar pentru a le vedea și a verifica cum funcționează.
 
@@ -49,7 +47,7 @@ Dacă un produs ajunge stricat, lipsește o piesă sau ai primit altceva decât 
 
 **Formular de retragere (opțional)**
 
-> Către [DENUMIREA FIRMEI], [ADRESA SEDIULUI], [EMAIL]:
+> Către CLEVNY RO S.R.L., Str. Predeal nr. 19, camera 6, oraș Voluntari, jud. Ilfov, România, [EMAIL]:
 >
 > Prin prezenta vă notific cu privire la retragerea mea din contractul de vânzare a următoarelor produse: ___
 > Comandat la data: ___ / Primit la data: ___
@@ -101,7 +99,7 @@ Dacă un colet ramburs este refuzat sau nu este ridicat fără motiv, ne rezerv�
 
 **1. Cine suntem**
 
-Magazinul online FlexyPlay (flexyplay.ro) este operat de **[DENUMIREA FIRMEI]**, cu sediul în [ADRESA SEDIULUI], CUI [CUI], înregistrată la Registrul Comerțului sub nr. [NR. REG. COM.]. Ne poți contacta la [EMAIL] sau [TELEFON].
+Magazinul online FlexyPlay (flexyplay.ro) este operat de **CLEVNY RO S.R.L.**, cu sediul în Str. Predeal nr. 19, camera 6, oraș Voluntari, jud. Ilfov, România, CUI 45226920, înregistrată la Registrul Comerțului sub nr. J23/7166/2021. Ne poți contacta la [EMAIL] sau [TELEFON].
 
 **2. Produsele**
 
@@ -115,10 +113,7 @@ Comanda se plasează pe site. După plasare primești un email de confirmare a �
 
 **4. Prețuri și plată**
 
-Prețurile sunt afișate în lei.
-*Alege una dintre variante și șterge-o pe cealaltă:*
-- *(plătitor de TVA)* Prețurile includ TVA.
-- *(neplătitor de TVA)* [DENUMIREA FIRMEI] nu este plătitoare de TVA.
+Prețurile sunt afișate în lei și sunt prețuri finale. CLEVNY RO S.R.L. nu este plătitoare de TVA.
 
 Costul livrării se afișează separat, înainte de plata comenzii. Poți plăti online cu cardul (inclusiv Apple Pay și Google Pay) sau ramburs, la curier. Plățile online sunt procesate în siguranță prin Shopify Payments. Noi nu vedem și nu stocăm datele cardului tău. Factura se emite pe datele introduse la comandă și se trimite pe email.
 
@@ -156,7 +151,7 @@ Putem actualiza acești termeni. Fiecărei comenzi i se aplică varianta în vig
 
 **Cine prelucrează datele tale**
 
-Operatorul datelor este **[DENUMIREA FIRMEI]**, [ADRESA SEDIULUI], CUI [CUI], email [EMAIL]. Respectăm Regulamentul (UE) 2016/679 (GDPR).
+Operatorul datelor este **CLEVNY RO S.R.L.**, Str. Predeal nr. 19, camera 6, oraș Voluntari, jud. Ilfov, România, CUI 45226920, email [EMAIL]. Respectăm Regulamentul (UE) 2016/679 (GDPR).
 
 **Ce date colectăm și de ce**
 
@@ -204,10 +199,10 @@ Site-ul se adresează adulților care cumpără, inclusiv pentru copii. Nu colec
 
 # 5. Informații de contact (Contact information)
 
-**[DENUMIREA FIRMEI]**
-Sediu: [ADRESA SEDIULUI]
-CUI: [CUI]
-Nr. Reg. Com.: [NR. REG. COM.]
+**CLEVNY RO S.R.L.**
+Sediu: Str. Predeal nr. 19, camera 6, oraș Voluntari, jud. Ilfov, România
+CUI: 45226920
+Nr. Reg. Com.: J23/7166/2021
 Email: [EMAIL]
 Telefon: [TELEFON]
 
