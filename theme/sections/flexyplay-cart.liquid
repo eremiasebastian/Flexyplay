@@ -58,6 +58,20 @@
   .fp-free-ship-bar span { display: block; height: 100%; border-radius: 999px; background: linear-gradient(90deg, #FFD166, #FF6B5E); transition: width .4s ease; }
   .fp-free-ship-done .fp-free-ship-bar span { background: #2EC4B6; }
   .fp-free-ship-bar { position: relative; }
+  .fp-ship { margin: 16px 0 14px; display: grid; gap: 10px; }
+  .fp-ship-h { margin: 0; font-family: 'Baloo 2', cursive; font-weight: 800; font-size: 17px; color: #432B21; }
+  .fp-ship-opt { display: flex; align-items: center; gap: 12px; padding: 12px 14px; background: #fff; border: 2px solid #f0e2d2; border-radius: 16px; cursor: pointer; transition: border-color .2s ease, box-shadow .2s ease; }
+  .fp-ship-opt input { accent-color: #FF6B5E; width: 18px; height: 18px; flex: none; margin: 0; }
+  .fp-ship-opt.fp-ship-on { border-color: #FF6B5E; box-shadow: 0 4px 0 #ffd3cd; }
+  .fp-ship-t { flex: 1; font-weight: 800; font-size: 15px; color: #432B21; line-height: 1.3; }
+  .fp-ship-t small { display: block; font-weight: 600; font-size: 12px; color: #9a8377; }
+  .fp-ship-p { font-weight: 800; font-size: 14px; color: #23988d; white-space: nowrap; }
+  .fp-ship-point { margin: -2px 0 2px; padding: 12px 14px; background: #fff8f0; border: 2px dashed #f0d9c2; border-radius: 16px; }
+  .fp-ship-point p { margin: 0 0 8px; font-size: 14px; font-weight: 700; color: #432B21; line-height: 1.4; }
+  .fp-ship-pick { width: 100%; background: #FF6B5E; color: #fff; font-family: 'Baloo 2', cursive; font-weight: 700; font-size: 16px; padding: 11px 16px; border-radius: 14px; box-shadow: 0 5px 0 #d94a3d; }
+  .fp-ship-change { background: none; border: none; padding: 0; font: inherit; font-size: 14px; font-weight: 800; color: #FF6B5E; cursor: pointer; text-decoration: underline; }
+  .fp-ship-note { margin: 0; font-size: 13px; color: #6b5348; }
+  .fp-ship-err { margin: 0; padding: 10px 14px; border-radius: 12px; background: #ffe9e6; color: #c2372b; font-weight: 800; font-size: 14px; }
   .fp-free-ship-tick { position: absolute; top: 0; bottom: 0; width: 3px; margin-left: -1px; background: #fff; }
   .fp-free-ship-marks { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 14px; margin-top: 8px; font-size: 12px; font-weight: 800; color: #9a8377; }
   .fp-free-ship-marks .fp-mark-done { color: #23988d; }
@@ -204,7 +218,55 @@
           <div class="fp-cart-row"><span>Livrare</span><span>{% if free_locker > 0 and free_home_left <= 0 %}gratuită 🎉{% elsif free_locker > 0 and free_locker_left <= 0 %}gratuită la locker 🎉{% else %}la pasul următor{% endif %}</span></div>
           <div class="fp-cart-total"><span>Total</span><strong>{{ cart.total_price | money }}</strong></div>
           <p class="fp-cart-note">{{ section.settings.shipping_note }}</p>
-          <form action="{{ routes.cart_url }}" method="post">
+          {%- comment -%}
+            Delivery choice (Packeta). Hidden until a Packeta API key is set in the section settings.
+            The choice and the pickup point are saved as cart attributes, so they show on the order in Admin.
+          {%- endcomment -%}
+          {%- assign packeta_key = section.settings.packeta_api_key | strip -%}
+          {%- if packeta_key != blank -%}
+            {%- liquid
+              assign ship_locker_label = 'Locker / punct de ridicare'
+              assign ship_home_label = 'Curier la domiciliu'
+              assign ship_method = cart.attributes['Livrare']
+              assign ship_point = cart.attributes['Punct de ridicare']
+              assign ship_state = ''
+              if ship_method == ship_locker_label
+                assign ship_state = 'locker'
+              elsif ship_method == ship_home_label
+                assign ship_state = 'home'
+              endif
+              assign locker_price = section.settings.locker_price | times: 100
+              assign home_price = section.settings.home_price | times: 100
+            -%}
+            <div class="fp-ship" data-fp-ship data-key="{{ packeta_key | escape }}" data-state="{{ ship_state }}" data-has-point="{% if ship_point != blank %}1{% endif %}">
+              <p class="fp-ship-h">Cum vrei să primești coletul?</p>
+              <label class="fp-ship-opt{% if ship_state == 'locker' %} fp-ship-on{% endif %}">
+                <input type="radio" name="fp_ship" value="locker" data-fp-ship-choice{% if ship_state == 'locker' %} checked{% endif %}>
+                <span class="fp-ship-t">📦 Locker sau punct de ridicare<small>Packeta, easybox și alte rețele, aproape de tine</small></span>
+                <span class="fp-ship-p">{% if free_locker > 0 and free_locker_left <= 0 %}gratuit{% elsif locker_price > 0 %}{{ locker_price | money }}{% endif %}</span>
+              </label>
+              {%- if ship_state == 'locker' -%}
+                <div class="fp-ship-point">
+                  {%- if ship_point != blank -%}
+                    <p>📍 {{ ship_point }}</p>
+                    <button type="button" class="fp-ship-change" data-fp-pick>Schimbă punctul</button>
+                  {%- else -%}
+                    <button type="button" class="fp-btn3d fp-ship-pick" data-fp-pick>Alege punctul pe hartă</button>
+                  {%- endif -%}
+                </div>
+              {%- endif -%}
+              <label class="fp-ship-opt{% if ship_state == 'home' %} fp-ship-on{% endif %}">
+                <input type="radio" name="fp_ship" value="home" data-fp-ship-choice{% if ship_state == 'home' %} checked{% endif %}>
+                <span class="fp-ship-t">🚚 Curier la domiciliu<small>Sameday, FAN Courier sau Cargus</small></span>
+                <span class="fp-ship-p">{% if free_locker > 0 and free_home_left <= 0 %}gratuit{% elsif home_price > 0 %}{{ home_price | money }}{% endif %}</span>
+              </label>
+              {%- if ship_state != blank -%}
+                <p class="fp-ship-note">La pasul următor alege aceeași variantă: „{% if ship_state == 'locker' %}Locker sau punct de ridicare (Packeta){% else %}Curier la domiciliu{% endif %}”.</p>
+              {%- endif -%}
+              <p class="fp-ship-err" data-fp-ship-err hidden></p>
+            </div>
+          {%- endif -%}
+          <form action="{{ routes.cart_url }}" method="post" data-fp-checkout>
             <button type="submit" name="checkout" class="fp-btn3d fp-checkout-btn">Finalizează comanda</button>
           </form>
           {%- comment -%} Apple Pay / Google Pay / Shop Pay express buttons; Shopify renders them once the wallets are enabled. {%- endcomment -%}
@@ -250,7 +312,70 @@
         });
     }
 
+    var LOCKER = 'Locker / punct de ridicare', HOME = 'Curier la domiciliu';
+    function saveAttributes(attrs) {
+      root.querySelector('[data-fp-cart-body]').classList.add('fp-cart-busy');
+      return fetch('{{ routes.cart_update_url }}.js', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({ attributes: attrs })
+      })
+        .then(function (res) { if (!res.ok) throw new Error('update failed'); return res.json(); })
+        .then(function (cart) { return refresh(cart.item_count); })
+        .catch(function () { window.location.reload(); });
+    }
+    function loadPacketa() {
+      if (window.Packeta && window.Packeta.Widget) return Promise.resolve();
+      return new Promise(function (resolve, reject) {
+        var s = document.createElement('script');
+        s.src = 'https://widget.packeta.com/v6/www/js/library.js';
+        s.onload = resolve; s.onerror = reject;
+        document.head.appendChild(s);
+      });
+    }
+    function pickPoint() {
+      var box = root.querySelector('[data-fp-ship]');
+      loadPacketa().then(function () {
+        window.Packeta.Widget.pick(box.dataset.key, function (point) {
+          if (!point) return;
+          var label = point.formatedValue || [point.name, point.street, point.city].filter(Boolean).join(', ');
+          saveAttributes({
+            'Livrare': LOCKER,
+            'Punct de ridicare': label,
+            'Packeta ID punct': String(point.id || ''),
+            'Packeta transportator': point.carrierId ? String(point.carrierId) + (point.carrierPickupPointId ? ' / ' + point.carrierPickupPointId : '') : ''
+          });
+        }, { country: 'ro', language: 'ro' });
+      }).catch(function () { showShipError('Harta nu s-a putut încărca. Reîncarcă pagina și încearcă din nou.'); });
+    }
+    function showShipError(msg) {
+      var err = root.querySelector('[data-fp-ship-err]');
+      if (!err) return;
+      err.textContent = msg; err.hidden = false;
+      err.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    root.addEventListener('change', function (e) {
+      var input = e.target.closest('[data-fp-ship-choice]');
+      if (!input) return;
+      if (input.value === 'home') {
+        saveAttributes({ 'Livrare': HOME, 'Punct de ridicare': '', 'Packeta ID punct': '', 'Packeta transportator': '' });
+      } else {
+        var box = root.querySelector('[data-fp-ship]');
+        saveAttributes({ 'Livrare': LOCKER }).then(function () { if (!box.dataset.hasPoint) pickPoint(); });
+      }
+    });
+
+    root.addEventListener('submit', function (e) {
+      if (!e.target.matches('[data-fp-checkout]')) return;
+      var box = root.querySelector('[data-fp-ship]');
+      if (!box) return;
+      if (!box.dataset.state) { e.preventDefault(); showShipError('Alege mai întâi cum vrei să primești coletul: la locker sau acasă.'); }
+      else if (box.dataset.state === 'locker' && !box.dataset.hasPoint) { e.preventDefault(); showShipError('Alege punctul de ridicare pe hartă, apoi finalizează comanda.'); }
+    });
+
     root.addEventListener('click', function (e) {
+      if (e.target.closest('[data-fp-pick]')) { e.preventDefault(); pickPoint(); return; }
       var link = e.target.closest('[data-fp-qty]');
       if (!link) return;
       e.preventDefault();
@@ -279,6 +404,11 @@
     { "type": "text", "id": "shipping_note", "label": "Notă sub total", "default": "Costul livrării și eventualele reduceri se calculează la finalizarea comenzii." },
     { "type": "number", "id": "free_shipping_threshold", "label": "Prag livrare gratuită la locker / punct (lei)", "info": "Trebuie să fie același cu pragul din Settings → Shipping and delivery. 0 = ascunde mesajul.", "default": 150 },
     { "type": "number", "id": "free_shipping_threshold_home", "label": "Prag livrare gratuită la domiciliu (lei)", "info": "Trebuie să fie același cu pragul din Settings → Shipping and delivery.", "default": 200 },
+    { "type": "header", "content": "Livrare (Packeta)" },
+    { "type": "paragraph", "content": "Cât timp cheia API e goală, alegerea livrării nu apare în coș și clientul merge direct la plată." },
+    { "type": "text", "id": "packeta_api_key", "label": "Cheie API Packeta", "info": "Codul de 16 caractere din contul Packeta (client.packeta.com → Setări → API). Nu pune aici parola API." },
+    { "type": "number", "id": "locker_price", "label": "Preț livrare la locker / punct (lei)", "info": "Afișat în coș sub prag. Trebuie să fie același cu tariful din Settings → Shipping and delivery." },
+    { "type": "number", "id": "home_price", "label": "Preț livrare la domiciliu (lei)", "info": "Afișat în coș sub prag. Trebuie să fie același cu tariful din Settings → Shipping and delivery." },
     { "type": "header", "content": "Coș gol" },
     { "type": "text", "id": "empty_heading", "label": "Titlu coș gol", "default": "Coșul tău e gol" },
     { "type": "text", "id": "empty_text", "label": "Text coș gol", "default": "Hai să-i găsim un prieten flexi!" },
