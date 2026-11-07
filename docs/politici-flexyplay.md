@@ -2,14 +2,9 @@
 
 **Unde le pui:** Shopify Admin → **Settings → Policies**. Fiecare text de mai jos merge în câmpul cu același nume. Copiază doar textul de sub titlul mare (fără titlu, Shopify pune titlul singur).
 
-**Datele firmei, emailul și telefonul sunt completate** (CLEVNY RO S.R.L., verificată la ANAF: activă, neplătitoare de TVA).
+**Datele firmei, emailul, telefonul și livrarea sunt completate** (CLEVNY RO S.R.L., verificată la ANAF: activă, neplătitoare de TVA).
 
-**Mai înlocuiește ce a rămas între [paranteze pătrate]:**
-
-| Ce | Exemplu |
-|---|---|
-| [COST LOCKER] | prețul livrării la locker / punct, sub 150 lei (ex. 12 lei) |
-| [COST DOMICILIU] | prețul livrării la domiciliu, sub 200 lei (ex. 19 lei) |
+**Prețuri de livrare completate:** 15 lei la locker / punct (gratuit de la 150 lei), 20 lei la domiciliu (gratuit de la 200 lei). Nu mai e nimic de completat.
 
 Adresa pentru retururi e pusă la sediul firmei (Voluntari). Dacă retururile trebuie trimise în altă parte, schimb-o în Politica de retur.
 
@@ -76,8 +71,8 @@ Toate jucăriile FlexyPlay sunt printate 3D la comandă:
 
 | Unde ajunge coletul | Sub prag | Gratuită de la |
 |---|---|---|
-| **Locker sau punct de ridicare** (Packeta, easybox etc.) | [COST LOCKER] | **150 lei** |
-| **Acasă**, prin curier | [COST DOMICILIU] | **200 lei** |
+| **Locker sau punct de ridicare** (Packeta, easybox etc.) | 15 lei | **150 lei** |
+| **Acasă**, prin curier | 20 lei | **200 lei** |
 
 Locul de ridicare îl alegi pe hartă, în coș, înainte de finalizarea comenzii.
 
