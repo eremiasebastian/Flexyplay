@@ -19,8 +19,8 @@
 
   assign fp_shipping_url = shipping_url | default: shop.shipping_policy.url | default: shop.refund_policy.url
   assign fp_contact_url = contact_url | default: pages['contact'].url
-  if fp_contact_url == blank and shop.email != blank
-    assign fp_contact_url = 'mailto:' | append: shop.email
+  if fp_contact_url == blank
+    assign fp_contact_url = 'mailto:flexyplaytoys@gmail.com'
   endif
 -%}
 <footer class="fp-footer" style="background:#2a1a13;color:#FFF6EC;padding:56px 24px 34px;">

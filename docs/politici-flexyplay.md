@@ -2,14 +2,12 @@
 
 **Unde le pui:** Shopify Admin → **Settings → Policies**. Fiecare text de mai jos merge în câmpul cu același nume. Copiază doar textul de sub titlul mare (fără titlu, Shopify pune titlul singur).
 
-**Datele firmei sunt completate** (CLEVNY RO S.R.L., verificată la ANAF: activă, neplătitoare de TVA).
+**Datele firmei, emailul și telefonul sunt completate** (CLEVNY RO S.R.L., verificată la ANAF: activă, neplătitoare de TVA).
 
 **Mai înlocuiește ce a rămas între [paranteze pătrate]:**
 
 | Ce | Exemplu |
 |---|---|
-| [EMAIL] | adresa la care răspunzi clienților, ex. contact@flexyplay.ro |
-| [TELEFON] | 07xx xxx xxx |
 | [CURIER] | Fan Courier / Sameday / Cargus etc. |
 | [COST LIVRARE] | ex. 19 lei |
 
@@ -27,7 +25,7 @@ Ai dreptul să te retragi din contract, fără să ne dai vreun motiv, în terme
 
 **Cum anunți returul**
 
-Ca să returnezi un produs, trimite-ne în cele 14 zile un mesaj la **[EMAIL]** cu numărul comenzii și produsele pe care vrei să le returnezi. Poți folosi formularul de mai jos, dar nu este obligatoriu. Îți confirmăm primirea pe email.
+Ca să returnezi un produs, trimite-ne în cele 14 zile un mesaj la **flexyplaytoys@gmail.com** cu numărul comenzii și produsele pe care vrei să le returnezi. Poți folosi formularul de mai jos, dar nu este obligatoriu. Îți confirmăm primirea pe email.
 
 **Cum trimiți produsele înapoi**
 
@@ -43,11 +41,11 @@ Ca să returnezi un produs, trimite-ne în cele 14 zile un mesaj la **[EMAIL]** 
 
 **Produs deteriorat, greșit sau incomplet**
 
-Dacă un produs ajunge stricat, lipsește o piesă sau ai primit altceva decât ai comandat, scrie-ne la **[EMAIL]** în cel mai scurt timp, cu o poză. Îl înlocuim sau îți returnăm banii, iar costul transportului îl suportăm noi. Produsele beneficiază și de garanția legală de conformitate de 2 ani (vezi Termeni și condiții).
+Dacă un produs ajunge stricat, lipsește o piesă sau ai primit altceva decât ai comandat, scrie-ne la **flexyplaytoys@gmail.com** în cel mai scurt timp, cu o poză. Îl înlocuim sau îți returnăm banii, iar costul transportului îl suportăm noi. Produsele beneficiază și de garanția legală de conformitate de 2 ani (vezi Termeni și condiții).
 
 **Formular de retragere (opțional)**
 
-> Către CLEVNY RO S.R.L., Str. Predeal nr. 19, camera 6, oraș Voluntari, jud. Ilfov, România, [EMAIL]:
+> Către CLEVNY RO S.R.L., Str. Predeal nr. 19, camera 6, oraș Voluntari, jud. Ilfov, România, flexyplaytoys@gmail.com:
 >
 > Prin prezenta vă notific cu privire la retragerea mea din contractul de vânzare a următoarelor produse: ___
 > Comandat la data: ___ / Primit la data: ___
@@ -87,7 +85,7 @@ Livrăm prin **[CURIER]**. După ce trimitem coletul, primești pe email număru
 
 **Coletul a ajuns deteriorat?**
 
-Verifică, te rugăm, coletul la primire. Dacă ambalajul e vizibil deteriorat, poți refuza coletul sau ne poți scrie la **[EMAIL]** cu poze, iar noi rezolvăm (înlocuire sau banii înapoi).
+Verifică, te rugăm, coletul la primire. Dacă ambalajul e vizibil deteriorat, poți refuza coletul sau ne poți scrie la **flexyplaytoys@gmail.com** cu poze, iar noi rezolvăm (înlocuire sau banii înapoi).
 
 **Coletul nu a fost ridicat**
 
@@ -99,7 +97,7 @@ Dacă un colet ramburs este refuzat sau nu este ridicat fără motiv, ne rezerv�
 
 **1. Cine suntem**
 
-Magazinul online FlexyPlay (flexyplay.ro) este operat de **CLEVNY RO S.R.L.**, cu sediul în Str. Predeal nr. 19, camera 6, oraș Voluntari, jud. Ilfov, România, CUI 45226920, înregistrată la Registrul Comerțului sub nr. J23/7166/2021. Ne poți contacta la [EMAIL] sau [TELEFON].
+Magazinul online FlexyPlay (flexyplay.ro) este operat de **CLEVNY RO S.R.L.**, cu sediul în Str. Predeal nr. 19, camera 6, oraș Voluntari, jud. Ilfov, România, CUI 45226920, înregistrată la Registrul Comerțului sub nr. J23/7166/2021. Ne poți contacta la flexyplaytoys@gmail.com sau +40 765 725 463.
 
 **2. Produsele**
 
@@ -127,7 +125,7 @@ Ai dreptul să returnezi produsele în 14 zile de la primire, fără să ne spui
 
 **7. Garanția legală de conformitate**
 
-Toate produsele beneficiază de garanția legală de conformitate de **2 ani** de la livrare, conform OUG nr. 140/2021. Dacă un produs nu este conform (de exemplu, o articulație ruptă din fabricație), ai dreptul la reparare sau înlocuire, gratuit. Dacă acestea nu sunt posibile, ai dreptul la reducerea prețului sau la încetarea contractului. Scrie-ne la [EMAIL] cu o descriere și poze. Garanția nu acoperă deteriorările produse prin folosire necorespunzătoare, lovire, expunere la căldură sau uzura normală.
+Toate produsele beneficiază de garanția legală de conformitate de **2 ani** de la livrare, conform OUG nr. 140/2021. Dacă un produs nu este conform (de exemplu, o articulație ruptă din fabricație), ai dreptul la reparare sau înlocuire, gratuit. Dacă acestea nu sunt posibile, ai dreptul la reducerea prețului sau la încetarea contractului. Scrie-ne la flexyplaytoys@gmail.com cu o descriere și poze. Garanția nu acoperă deteriorările produse prin folosire necorespunzătoare, lovire, expunere la căldură sau uzura normală.
 
 **8. Proprietate intelectuală**
 
@@ -139,7 +137,7 @@ Prelucrăm datele tale conform Politicii de confidențialitate.
 
 **10. Reclamații și soluționarea litigiilor**
 
-Pentru orice problemă, scrie-ne la [EMAIL]. Răspundem în cel mult 3 zile lucrătoare și încercăm să rezolvăm totul pe cale amiabilă. Dacă nu ajungem la o înțelegere, te poți adresa Autorității Naționale pentru Protecția Consumatorilor (ANPC, anpc.ro). Poți apela și la soluționarea alternativă a litigiilor (SAL): https://anpc.ro/ce-este-sal/. Contractului i se aplică legea română.
+Pentru orice problemă, scrie-ne la flexyplaytoys@gmail.com. Răspundem în cel mult 3 zile lucrătoare și încercăm să rezolvăm totul pe cale amiabilă. Dacă nu ajungem la o înțelegere, te poți adresa Autorității Naționale pentru Protecția Consumatorilor (ANPC, anpc.ro). Poți apela și la soluționarea alternativă a litigiilor (SAL): https://anpc.ro/ce-este-sal/. Contractului i se aplică legea română.
 
 **11. Modificări**
 
@@ -151,7 +149,7 @@ Putem actualiza acești termeni. Fiecărei comenzi i se aplică varianta în vig
 
 **Cine prelucrează datele tale**
 
-Operatorul datelor este **CLEVNY RO S.R.L.**, Str. Predeal nr. 19, camera 6, oraș Voluntari, jud. Ilfov, România, CUI 45226920, email [EMAIL]. Respectăm Regulamentul (UE) 2016/679 (GDPR).
+Operatorul datelor este **CLEVNY RO S.R.L.**, Str. Predeal nr. 19, camera 6, oraș Voluntari, jud. Ilfov, România, CUI 45226920, email flexyplaytoys@gmail.com. Respectăm Regulamentul (UE) 2016/679 (GDPR).
 
 **Ce date colectăm și de ce**
 
@@ -185,7 +183,7 @@ Unii dintre acești furnizori pot prelucra date în afara Spațiului Economic Eu
 
 **Drepturile tale**
 
-Ai dreptul de acces, rectificare, ștergere, restricționare, portabilitate și opoziție, precum și dreptul de a-ți retrage oricând consimțământul. Pentru oricare dintre ele, scrie-ne la [EMAIL]. Ai și dreptul să depui o plângere la Autoritatea Națională de Supraveghere a Prelucrării Datelor cu Caracter Personal (ANSPDCP, www.dataprotection.ro).
+Ai dreptul de acces, rectificare, ștergere, restricționare, portabilitate și opoziție, precum și dreptul de a-ți retrage oricând consimțământul. Pentru oricare dintre ele, scrie-ne la flexyplaytoys@gmail.com. Ai și dreptul să depui o plângere la Autoritatea Națională de Supraveghere a Prelucrării Datelor cu Caracter Personal (ANSPDCP, www.dataprotection.ro).
 
 **Cookie-uri**
 
@@ -203,7 +201,7 @@ Site-ul se adresează adulților care cumpără, inclusiv pentru copii. Nu colec
 Sediu: Str. Predeal nr. 19, camera 6, oraș Voluntari, jud. Ilfov, România
 CUI: 45226920
 Nr. Reg. Com.: J23/7166/2021
-Email: [EMAIL]
-Telefon: [TELEFON]
+Email: flexyplaytoys@gmail.com
+Telefon: +40 765 725 463
 
 ANPC: https://anpc.ro · Soluționarea alternativă a litigiilor (SAL): https://anpc.ro/ce-este-sal/
