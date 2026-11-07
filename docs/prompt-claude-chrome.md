@@ -16,8 +16,9 @@ DATE
 - Adresă firmă: Str. Predeal nr. 19, camera 6, oraș Voluntari, jud. Ilfov, România
 - Email clienți: flexyplaytoys@gmail.com
 - Telefon: +40 765 725 463
-- ⚠️ Curier: ____________
-- ⚠️ Cost livrare sub 150 lei: ____ lei
+- Curier: Packeta (cu partenerii Sameday, FAN Courier, Cargus)
+- ⚠️ Cost livrare la locker / punct, sub 150 lei: ____ lei
+- ⚠️ Cost livrare la domiciliu, sub 200 lei: ____ lei
 
 1) SETTINGS → GENERAL (Store details)
 - Store name: FlexyPlay (cu P mare).
@@ -37,9 +38,11 @@ DATE
 
 4) SETTINGS → SHIPPING AND DELIVERY
 - În profilul general de livrare, zona de livrare: doar România (dacă există alte țări/zone, spune-mi înainte să le scoți).
-- Tarife pentru România:
-  a) „Livrare standard prin curier (2–4 zile lucrătoare)” – preț: costul de la DATE – condiție: pe baza valorii comenzii, de la 0 la 149,99 lei.
-  b) „Livrare gratuită (2–4 zile lucrătoare)” – preț 0 – condiție: valoarea comenzii minim 150 lei.
+- Tarife pentru România (4 tarife, numele exact ca mai jos):
+  a) „Locker sau punct de ridicare (Packeta)” – preț: costul pentru locker de la DATE – condiție pe baza valorii comenzii: de la 0 la 149,99 lei.
+  b) „Locker sau punct de ridicare (Packeta) – gratuit” – preț 0 – condiție: valoarea comenzii minim 150 lei.
+  c) „Curier la domiciliu” – preț: costul pentru domiciliu de la DATE – condiție pe baza valorii comenzii: de la 0 la 199,99 lei.
+  d) „Curier la domiciliu – gratuit” – preț 0 – condiție: valoarea comenzii minim 200 lei.
 - Șterge orice alt tarif din zona România doar după ce îmi arăți lista.
 
 5) SETTINGS → PAYMENTS
@@ -50,7 +53,7 @@ DATE
 
 6) SETTINGS → POLICIES
 - Deschide documentul: https://github.com/eremiasebastian/flexyplay/blob/claude/flexyplay-shopify-setup-lqpj3n/docs/politici-flexyplay.md
-- Înlocuiește [CURIER] și [COST LIVRARE] cu valorile din DATE.
+- Înlocuiește [COST LOCKER] și [COST DOMICILIU] cu valorile din DATE.
 - Lipește fiecare politică în câmpul ei: 1 → Return and refund policy, 2 → Shipping policy, 3 → Terms of service, 4 → Privacy policy, 5 → Contact information. Fără titlul mare și fără tabelul cu instrucțiuni de la începutul documentului. Păstrează îngroșările și listele.
 
 7) SETTINGS → CHECKOUT

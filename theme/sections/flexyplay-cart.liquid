@@ -57,6 +57,10 @@
   .fp-free-ship-bar { height: 10px; background: #f6ece1; border-radius: 999px; overflow: hidden; }
   .fp-free-ship-bar span { display: block; height: 100%; border-radius: 999px; background: linear-gradient(90deg, #FFD166, #FF6B5E); transition: width .4s ease; }
   .fp-free-ship-done .fp-free-ship-bar span { background: #2EC4B6; }
+  .fp-free-ship-bar { position: relative; }
+  .fp-free-ship-tick { position: absolute; top: 0; bottom: 0; width: 3px; margin-left: -1px; background: #fff; }
+  .fp-free-ship-marks { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 14px; margin-top: 8px; font-size: 12px; font-weight: 800; color: #9a8377; }
+  .fp-free-ship-marks .fp-mark-done { color: #23988d; }
   .fp-express { margin-top: 16px; }
   .fp-express-label { display: flex; align-items: center; gap: 10px; margin: 0 0 10px; font-size: 13px; font-weight: 700; color: #9a8377; }
   .fp-express-label::before, .fp-express-label::after { content: ""; flex: 1; height: 2px; background: #f6ece1; }
@@ -111,20 +115,41 @@
         <span>{{ cart.item_count }} {% if cart.item_count == 1 %}produs{% else %}produse{% endif %}</span>
       </div>
 
-      {%- assign free_threshold = section.settings.free_shipping_threshold | times: 100 -%}
-      {%- if free_threshold > 0 -%}
-        {%- assign free_remaining = free_threshold | minus: cart.total_price -%}
-        {%- assign free_progress = cart.total_price | times: 100 | divided_by: free_threshold -%}
-        {%- if free_progress > 100 -%}{%- assign free_progress = 100 -%}{%- endif -%}
-        <div class="fp-free-ship{% if free_remaining <= 0 %} fp-free-ship-done{% endif %}">
+      {%- liquid
+        # Two free-shipping tiers: locker / pickup point (lower) and home delivery (higher).
+        assign free_locker = section.settings.free_shipping_threshold | times: 100
+        assign free_home = section.settings.free_shipping_threshold_home | times: 100
+        if free_home < free_locker
+          assign free_home = free_locker
+        endif
+        assign free_locker_left = free_locker | minus: cart.total_price
+        assign free_home_left = free_home | minus: cart.total_price
+      -%}
+      {%- if free_locker > 0 -%}
+        {%- liquid
+          assign free_progress = cart.total_price | times: 100 | divided_by: free_home
+          if free_progress > 100
+            assign free_progress = 100
+          endif
+          assign locker_mark = free_locker | times: 100 | divided_by: free_home
+        -%}
+        <div class="fp-free-ship{% if free_home_left <= 0 %} fp-free-ship-done{% endif %}">
           <p>
-            {%- if free_remaining > 0 -%}
-              🚚 Mai adaugă <strong>{{ free_remaining | money }}</strong> și ai livrare gratuită!
+            {%- if free_locker_left > 0 -%}
+              🚚 Mai adaugă <strong>{{ free_locker_left | money }}</strong> și ai livrare gratuită la locker sau punct de ridicare!
+            {%- elsif free_home_left > 0 -%}
+              🎉 Ai livrare gratuită la locker! Mai adaugă <strong>{{ free_home_left | money }}</strong> și o ai gratuită și acasă.
             {%- else -%}
-              🎉 Felicitări, ai livrare gratuită!
+              🎉 Felicitări, ai livrare gratuită, la locker sau acasă!
             {%- endif -%}
           </p>
-          <div class="fp-free-ship-bar" role="progressbar" aria-label="Progres spre livrarea gratuită" aria-valuemin="0" aria-valuemax="100" aria-valuenow="{{ free_progress }}"><span style="width:{{ free_progress }}%;"></span></div>
+          <div class="fp-free-ship-bar" role="progressbar" aria-label="Progres spre livrarea gratuită" aria-valuemin="0" aria-valuemax="100" aria-valuenow="{{ free_progress }}"><span style="width:{{ free_progress }}%;"></span>{%- if free_home > free_locker -%}<i class="fp-free-ship-tick" style="left:{{ locker_mark }}%;"></i>{%- endif -%}</div>
+          {%- if free_home > free_locker -%}
+            <div class="fp-free-ship-marks">
+              <span class="{% if free_locker_left <= 0 %}fp-mark-done{% endif %}">{% if free_locker_left <= 0 %}✓{% else %}📦{% endif %} Locker gratuit de la {{ free_locker | money }}</span>
+              <span class="{% if free_home_left <= 0 %}fp-mark-done{% endif %}">{% if free_home_left <= 0 %}✓{% else %}🏠{% endif %} Acasă gratuit de la {{ free_home | money }}</span>
+            </div>
+          {%- endif -%}
         </div>
       {%- endif -%}
 
@@ -176,7 +201,7 @@
           {%- for discount in cart.cart_level_discount_applications -%}
             <div class="fp-cart-row fp-cart-discount"><span>{{ discount.title }}</span><span>−{{ discount.total_allocated_amount | money }}</span></div>
           {%- endfor -%}
-          <div class="fp-cart-row"><span>Livrare</span><span>{% if free_threshold > 0 and cart.total_price >= free_threshold %}gratuită 🎉{% else %}la pasul următor{% endif %}</span></div>
+          <div class="fp-cart-row"><span>Livrare</span><span>{% if free_locker > 0 and free_home_left <= 0 %}gratuită 🎉{% elsif free_locker > 0 and free_locker_left <= 0 %}gratuită la locker 🎉{% else %}la pasul următor{% endif %}</span></div>
           <div class="fp-cart-total"><span>Total</span><strong>{{ cart.total_price | money }}</strong></div>
           <p class="fp-cart-note">{{ section.settings.shipping_note }}</p>
           <form action="{{ routes.cart_url }}" method="post">
@@ -191,7 +216,7 @@
           {%- endif -%}
           <a href="{{ routes.root_url }}#produse" class="fp-cart-continue">← Continuă cumpărăturile</a>
           <ul class="fp-cart-perks">
-            <li>🚚 Livrare 3–6 zile în toată țara</li>
+            <li>🚚 Livrare 3–6 zile, la locker sau acasă</li>
             <li>↩️ Retur în 14 zile</li>
             <li>🎁 Ambalat cadou, gata de dăruit</li>
           </ul>
@@ -252,7 +277,8 @@
     { "type": "header", "content": "Coș" },
     { "type": "text", "id": "heading", "label": "Titlu", "default": "Coșul tău" },
     { "type": "text", "id": "shipping_note", "label": "Notă sub total", "default": "Costul livrării și eventualele reduceri se calculează la finalizarea comenzii." },
-    { "type": "number", "id": "free_shipping_threshold", "label": "Prag livrare gratuită (lei)", "info": "Trebuie să fie același cu pragul din Settings → Shipping and delivery. 0 = ascunde mesajul.", "default": 150 },
+    { "type": "number", "id": "free_shipping_threshold", "label": "Prag livrare gratuită la locker / punct (lei)", "info": "Trebuie să fie același cu pragul din Settings → Shipping and delivery. 0 = ascunde mesajul.", "default": 150 },
+    { "type": "number", "id": "free_shipping_threshold_home", "label": "Prag livrare gratuită la domiciliu (lei)", "info": "Trebuie să fie același cu pragul din Settings → Shipping and delivery.", "default": 200 },
     { "type": "header", "content": "Coș gol" },
     { "type": "text", "id": "empty_heading", "label": "Titlu coș gol", "default": "Coșul tău e gol" },
     { "type": "text", "id": "empty_text", "label": "Text coș gol", "default": "Hai să-i găsim un prieten flexi!" },

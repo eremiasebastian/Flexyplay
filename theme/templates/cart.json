@@ -5,7 +5,8 @@
       "settings": {
         "brand_name": "FlexyPlay",
         "logo_image": "shopify://shop_images/flexyplay-logo-trim.png",
-        "free_shipping_threshold": 150
+        "free_shipping_threshold": 150,
+        "free_shipping_threshold_home": 200
       }
     }
   },
