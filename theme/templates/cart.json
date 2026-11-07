@@ -1,12 +1,29 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "flexyplay_cart": {
       "type": "flexyplay-cart",
       "settings": {
-        "brand_name": "FlexyPlay",
         "logo_image": "shopify://shop_images/flexyplay-logo-trim.png",
+        "brand_name": "FlexyPlay",
+        "heading": "Coșul tău",
+        "shipping_note": "Costul livrării și eventualele reduceri se calculează la finalizarea comenzii.",
         "free_shipping_threshold": 150,
-        "free_shipping_threshold_home": 200
+        "free_shipping_threshold_home": 200,
+        "packeta_api_key": "",
+        "locker_price": 15,
+        "home_price": 20,
+        "empty_heading": "Coșul tău e gol",
+        "empty_text": "Hai să-i găsim un prieten flexi!",
+        "footer_tagline": "Jucării flexi articulate, printate 3D cu drag în România."
       }
     }
   },
