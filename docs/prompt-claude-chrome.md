@@ -65,7 +65,7 @@ DATE
 - Spune-mi ce opțiuni au rămas nesetate.
 
 9) VERIFICARE FINALĂ (nu schimba nimic aici)
-- Deschide flexyplay.ro (folosește parola dacă e cerută), pune un produs în coș și mergi până la pagina de plată, fără să plătești. Spune-mi: ce metode de plată apar, ce costuri de livrare apar sub și peste 150 lei, dacă apar linkurile către politici jos în checkout și dacă textele sunt în română.
+- Deschide flexyplay.ro (folosește parola dacă e cerută), pune un produs în coș și mergi până la pagina de plată, fără să plătești. Spune-mi: ce metode de plată apar, ce costuri de livrare apar sub și peste 200 lei, dacă apar linkurile către politici jos în checkout și dacă textele sunt în română.
 ```
 
 ## Ce rămâne după ce termină extensia
