@@ -4,7 +4,7 @@
 
 **Datele firmei, emailul, telefonul și livrarea sunt completate** (CLEVNY RO S.R.L., verificată la ANAF: activă, neplătitoare de TVA).
 
-**Prețuri de livrare completate:** 15 lei la locker / punct (gratuit de la 150 lei), 20 lei la domiciliu (gratuit de la 200 lei). Nu mai e nimic de completat.
+**Prețul livrării e completat:** 20 lei, gratuit de la 200 lei. Nu mai e nimic de completat.
 
 Adresa pentru retururi e pusă la sediul firmei (Voluntari). Dacă retururile trebuie trimise în altă parte, schimb-o în Politica de retur.
 
@@ -69,18 +69,14 @@ Toate jucăriile FlexyPlay sunt printate 3D la comandă:
 
 **Cât costă livrarea**
 
-| Unde ajunge coletul | Sub prag | Gratuită de la |
-|---|---|---|
-| **Locker sau punct de ridicare** (Packeta, easybox etc.) | 15 lei | **150 lei** |
-| **Acasă**, prin curier | 20 lei | **200 lei** |
-
-Locul de ridicare îl alegi pe hartă, în coș, înainte de finalizarea comenzii.
+- **20 lei** pentru comenzile sub 200 lei;
+- **gratuită** pentru comenzile de la 200 lei în sus.
 
 Costul exact îl vezi în coș și la finalizarea comenzii, înainte să plătești.
 
 **Curier și urmărire**
 
-Livrăm prin **Packeta**, împreună cu partenerii săi (Sameday, FAN Courier, Cargus). După ce trimitem coletul, primești pe email sau SMS numărul de urmărire și anunțul când coletul a ajuns la locker sau la punct. Plata se poate face online, cu cardul, sau ramburs.
+Livrăm prin firme de curierat partenere. După ce trimitem coletul, primești pe email sau SMS numărul de urmărire. Plata se poate face online, cu cardul, sau ramburs.
 
 **Coletul a ajuns deteriorat?**
 
@@ -88,7 +84,7 @@ Verifică, te rugăm, coletul la primire. Dacă ambalajul e vizibil deteriorat, 
 
 **Coletul nu a fost ridicat**
 
-Coletele trimise la locker sau la punct de ridicare te așteaptă câteva zile (termenul exact îl primești în mesajul de la Packeta). Dacă un colet ramburs este refuzat sau nu este ridicat fără motiv, ne rezervăm dreptul de a nu mai accepta plata ramburs la comenzile următoare.
+Dacă un colet ramburs este refuzat sau nu este ridicat fără motiv, ne rezervăm dreptul de a nu mai accepta plata ramburs la comenzile următoare.
 
 ---
 
@@ -167,7 +163,7 @@ Datele cardului sunt introduse direct la procesatorul de plăți. Noi nu le vede
 Transmitem doar datele necesare pentru:
 
 - **Shopify** (platforma magazinului și procesarea plăților online);
-- **Packeta** și curierii parteneri (Sameday, FAN Courier, Cargus), pentru livrare;
+- **firmele de curierat**, pentru livrare;
 - **contabilitate și facturare**;
 - **Meta și Google**, doar dacă accepți cookie-urile de marketing;
 - **autorități**, doar când legea ne obligă.

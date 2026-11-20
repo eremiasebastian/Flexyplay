@@ -12,13 +12,11 @@ Ești în browserul meu și ești logat în Shopify Admin la magazinul FlexyPlay
 
 DATE
 - Nume magazin: FlexyPlay
-- Firmă: CLEVNY RO S.R.L., CUI 45226920, J23/7166/2021, neplătitoare de TVA
+- Firmă: CLEVNY RO S.R.L., CUI 45226920, J23/7166/2021, neplătitoare de TVA (codul special RO45274146 se folosește doar la Billing, pentru facturile Shopify)
 - Adresă firmă: Str. Predeal nr. 19, camera 6, oraș Voluntari, jud. Ilfov, România
 - Email clienți: flexyplaytoys@gmail.com
 - Telefon: +40 765 725 463
-- Curier: Packeta (cu partenerii Sameday, FAN Courier, Cargus)
-- ⚠️ Cost livrare la locker / punct, sub 150 lei: ____ lei
-- ⚠️ Cost livrare la domiciliu, sub 200 lei: ____ lei
+- Livrare: un singur tarif „Livrare standard”, 20 lei, gratuit de la 200 lei, doar în România
 
 1) SETTINGS → GENERAL (Store details)
 - Store name: FlexyPlay (cu P mare).
@@ -38,11 +36,10 @@ DATE
 
 4) SETTINGS → SHIPPING AND DELIVERY
 - În profilul general de livrare, zona de livrare: doar România (dacă există alte țări/zone, spune-mi înainte să le scoți).
-- Tarife pentru România (4 tarife, numele exact ca mai jos):
-  a) „Locker sau punct de ridicare (Packeta)” – preț: costul pentru locker de la DATE – condiție pe baza valorii comenzii: de la 0 la 149,99 lei.
-  b) „Locker sau punct de ridicare (Packeta) – gratuit” – preț 0 – condiție: valoarea comenzii minim 150 lei.
-  c) „Curier la domiciliu” – preț: costul pentru domiciliu de la DATE – condiție pe baza valorii comenzii: de la 0 la 199,99 lei.
-  d) „Curier la domiciliu – gratuit” – preț 0 – condiție: valoarea comenzii minim 200 lei.
+- Tarife pentru România:
+  a) „Livrare standard” – 20 lei – condiție pe valoarea comenzii: 0 – 199,99 lei.
+  b) „Livrare standard – gratuită” – 0 lei – condiție: valoarea comenzii minim 200 lei.
+  (în interfața nouă poate fi o singură opțiune de 20 lei cu „gratuit de la 200 lei”)
 - Șterge orice alt tarif din zona România doar după ce îmi arăți lista.
 
 5) SETTINGS → PAYMENTS
@@ -53,7 +50,7 @@ DATE
 
 6) SETTINGS → POLICIES
 - Deschide documentul: https://github.com/eremiasebastian/flexyplay/blob/claude/flexyplay-shopify-setup-lqpj3n/docs/politici-flexyplay.md
-- Înlocuiește [COST LOCKER] și [COST DOMICILIU] cu valorile din DATE.
+- Prețurile de livrare sunt deja completate în document.
 - Lipește fiecare politică în câmpul ei: 1 → Return and refund policy, 2 → Shipping policy, 3 → Terms of service, 4 → Privacy policy, 5 → Contact information. Fără titlul mare și fără tabelul cu instrucțiuni de la începutul documentului. Păstrează îngroșările și listele.
 
 7) SETTINGS → CHECKOUT
